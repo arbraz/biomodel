@@ -1,6 +1,6 @@
 /*
  * This default data file was taken from:
- * /home/Alex1/trick_models/bio/organs/include/organ_integ.d
+ * /home/user/git/projects/biomodel/trick_models/bio/organs/include/organ_integ.d
  * The header file is:
  * TRICK_HOME/trick_source/sim_services/include/integrator.h
  * The type substitution is:
@@ -8,7 +8,7 @@
  */
 
 
-/* $Id: S_source.c auto 2014/03/18 14:50:33 Alex1 */
+/* $Id: S_source.c auto 2013/09/30 01:36:58 user */
 
 #define NUM_STEP 12
 #define NUM_VARIABLES 4

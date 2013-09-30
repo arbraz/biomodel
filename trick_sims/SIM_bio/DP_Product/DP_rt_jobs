@@ -15,12 +15,26 @@ grid: Yes
 X_variable: "sys.exec.out.time" label:"Time"
 Y_variable: "sys.exec.out.frame_job_time[1]" label:"sys.input_processor(&sys.exec)"
             line_style:PLAIN line_color:red
-Plot 3: "sys.var_server_sync(&sys.exec)"
+Plot 3: "sensor.concentration_sensor_update(&sensor.concentration_sensor)"
 X_axis_label:"Time"
 Y_axis_label:"Execution Time"
 grid: Yes
 X_variable: "sys.exec.out.time" label:"Time"
-Y_variable: "sys.exec.out.frame_job_time[2]" label:"sys.var_server_sync(&sys.exec)"
+Y_variable: "sys.exec.out.frame_job_time[2]" label:"sensor.concentration_sensor_update(&sensor.concentration_sensor)"
+            line_style:PLAIN line_color:red
+Plot 4: "control.concentration_control(&control.concentration_control)"
+X_axis_label:"Time"
+Y_axis_label:"Execution Time"
+grid: Yes
+X_variable: "sys.exec.out.time" label:"Time"
+Y_variable: "sys.exec.out.frame_job_time[3]" label:"control.concentration_control(&control.concentration_control)"
+            line_style:PLAIN line_color:red
+Plot 5: "sys.var_server_sync(&sys.exec)"
+X_axis_label:"Time"
+Y_axis_label:"Execution Time"
+grid: Yes
+X_variable: "sys.exec.out.time" label:"Time"
+Y_variable: "sys.exec.out.frame_job_time[4]" label:"sys.var_server_sync(&sys.exec)"
             line_style:PLAIN line_color:red
 
 Page 2: "Executive Overhead"
@@ -52,7 +66,9 @@ Table 1: "Job Execution Times"
 Variable: "sys.exec.out.time" label:"Time" format: "%13.6f"
 Variable: "sys.exec.out.frame_job_time[0]" label:"sys.integrator(dyn)" format: "%13.6f"
 Variable: "sys.exec.out.frame_job_time[1]" label:"sys.input_processor(&sys.exec)" format: "%13.6f"
-Variable: "sys.exec.out.frame_job_time[2]" label:"sys.var_server_sync(&sys.exec)" format: "%13.6f"
+Variable: "sys.exec.out.frame_job_time[2]" label:"sensor.concentration_sensor_update(&sensor.concentration_sensor)" format: "%13.6f"
+Variable: "sys.exec.out.frame_job_time[3]" label:"control.concentration_control(&control.concentration_control)" format: "%13.6f"
+Variable: "sys.exec.out.frame_job_time[4]" label:"sys.var_server_sync(&sys.exec)" format: "%13.6f"
 Variable: "sys.exec.out.data_rec_time" label:"DataRecTime" format: "%13.6f"
 Variable: "sys.exec.out.master_sync_time" label:"MasterSyncTime" format: "%13.6f"
 Variable: "sys.exec.out.slave_sync_time" label:"SlaveSyncTime" format: "%13.6f"

@@ -1,4 +1,4 @@
-Output for /home/Alex1/Downloads/07.23.1/bin/CP version 07.23.1-1 at Tue Mar 18 14:50:32 2014
+Output for /home/user/trick/07.23.1/bin/CP version 07.23.1-1 at Mon Sep 30 01:36:57 2013
 
 Parsing S_define...
 
@@ -16,20 +16,44 @@ Looking for module organ_init...(found cache)
 Looking for module concentration_deriv...(found cache)
 Looking for module organ_integ...(found cache)
 
+Processing sim_object sensor
+Looking for structure CONCENTRATION_SENSOR... (found cache)
+Looking for module concentration_sensor_init...(found cache)
+Looking for module concentration_sensor_update...(found cache)
+
+Processing sim_object control
+Looking for structure CONCENTRATION_CONTROL... (found cache)
+Looking for module concentration_control_init...(found new/updated)
+Looking for module concentration_control...(found new/updated)
+
 Completed parsing S_define
 
 Determining structure dependencies.
 Determining module dependencies.
+Getting dependencies for /home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control_init.c
+Getting dependencies for /home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control.c
 MIS-ing all src files... 
-   Processing /home/Alex1/trick_models/bio/organs/src/organ_init.c
+   Processing /home/user/git/projects/biomodel/trick_models/bio/organs/src/organ_init.c
       Processing organ_init
       Processed (job_class = N/A) int  organ_init(ORGANS*)
-   Processing /home/Alex1/trick_models/bio/organs/src/concentration_deriv.c
+   Processing /home/user/git/projects/biomodel/trick_models/bio/organs/src/concentration_deriv.c
       Processing concentration_deriv
       Processed (job_class = N/A) int  concentration_deriv(ORGANS*)
-   Processing /home/Alex1/trick_models/bio/organs/src/organ_integ.c
+   Processing /home/user/git/projects/biomodel/trick_models/bio/organs/src/organ_integ.c
       Processing organ_integ
       Processed (job_class = N/A) int  organ_integ(INTEGRATOR*,ORGANS*)
+   Processing /home/user/git/projects/biomodel/trick_models/bio/sensors/src/concentration_sensor_init.c
+      Processing concentration_sensor_init
+      Processed (job_class = N/A) int  concentration_sensor_init(CONCENTRATION_SENSOR*)
+   Processing /home/user/git/projects/biomodel/trick_models/bio/sensors/src/concentration_sensor_update.c
+      Processing concentration_sensor_update
+      Processed (job_class = N/A) int  concentration_sensor_update(CONCENTRATION_SENSOR*,ORGANS*)
+   Processing /home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control_init.c
+      Processing concentration_control_init
+      Processed (job_class = N/A) int  concentration_control_init(CONCENTRATION_CONTROL*)
+   Processing /home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control.c
+      Processing concentration_control
+      Processed (job_class = N/A) int  concentration_control(CONCENTRATION_CONTROL*,ORGANS*,CONCENTRATION_SENSOR*)
 
 MIS complete
 
@@ -38,29 +62,27 @@ Creating New Makefile...  Complete
 Creating S_source.c... Complete
 Creating Default_data... Complete
 Creating S_document.xml... Complete
-Adding makedepend dependencies [1 dir(s)]
-   1. Adding dependencies for src files in /home/Alex1/trick_models/bio/organs
-   2. Adding dependencies for S_source.c
+Adding makedepend dependencies [3 dir(s)]
+   1. Adding dependencies for src files in /home/user/git/projects/biomodel/trick_models/bio/control
+   2. Adding dependencies for src files in /home/user/git/projects/biomodel/trick_models/bio/organs
+   3. Adding dependencies for src files in /home/user/git/projects/biomodel/trick_models/bio/sensors
+   4. Adding dependencies for S_source.c
 
 Appended dependencies to Makefile
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/concentration_deriv.o lib_Linux_4.1_25/o0.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_init.o lib_Linux_4.1_25/o1.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_integ.o lib_Linux_4.1_25/o2.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organ_params.o lib_Linux_4.1_25/i0.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organs.o lib_Linux_4.1_25/i1.o
-cc   -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include  -c S_source.c -o lib_Linux_4.1_25/S_source.o
+cd /home/user/git/projects/biomodel/trick_models/bio/control/src/ ; cc  -I/home/user/git/projects/biomodel/trick_sims/SIM_bio -I/home/user/git/projects/biomodel/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/user/trick/07.23.1/trick_source -I../include  -c concentration_control.c -o /home/user/git/projects/biomodel/trick_models/bio/control/object_Linux_4.4_212/concentration_control.o
+cc  -I/home/user/git/projects/biomodel/trick_sims/SIM_bio -I/home/user/git/projects/biomodel/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/user/trick/07.23.1/trick_source -I../include  -c S_source.c -o lib_Linux_4.4_212/S_source.o
 Verifying sim checksums...
-cc   -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include  -c S_checksums.c -o lib_Linux_4.1_25/S_checksums.o
-ar crs lib_Linux_4.1_25/lib_sim_objs.a lib_Linux_4.1_25/*.o
-cc  -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include -o S_main_Linux_4.1_25.exe \
-		/home/Alex1/Downloads/07.23.1/lib_Linux_4.1_25/master.o\
-		/home/Alex1/Downloads/07.23.1/lib_Linux_4.1_25/libtrick.a\
-		lib_Linux_4.1_25/lib_sim_objs.a\
+cc  -I/home/user/git/projects/biomodel/trick_sims/SIM_bio -I/home/user/git/projects/biomodel/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/user/trick/07.23.1/trick_source -I../include  -c S_checksums.c -o lib_Linux_4.4_212/S_checksums.o
+ar crs lib_Linux_4.4_212/lib_sim_objs.a lib_Linux_4.4_212/*.o
+cc -I/home/user/git/projects/biomodel/trick_sims/SIM_bio -I/home/user/git/projects/biomodel/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/user/trick/07.23.1/trick_source -I../include -o S_main_Linux_4.4_212.exe \
+		/home/user/trick/07.23.1/lib_Linux_4.4_212/master.o\
+		/home/user/trick/07.23.1/lib_Linux_4.4_212/libtrick.a\
+		lib_Linux_4.4_212/lib_sim_objs.a\
 		  \
 		  \
-		/home/Alex1/Downloads/07.23.1/lib_Linux_4.1_25/libtrick.a -lm -lrt
+		/home/user/trick/07.23.1/lib_Linux_4.4_212/libtrick.a -lm -lrt
 Generating S_sie.resource...
-./S_main_Linux_4.1_25.exe sie
+./S_main_Linux_4.4_212.exe sie
 
 Created S_sie.resource file.
 

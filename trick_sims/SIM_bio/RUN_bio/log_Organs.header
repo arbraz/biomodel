@@ -1,5 +1,0 @@
-log_Organs	byte_order	is	little_endian
-log_Organs	double	s	sys.exec.out.time
-log_Organs	char	(null)	organs.out.Cli
-log_Organs	char	(null)	organs.out.Clu
-log_Organs	char	(null)	organs.out.Cm

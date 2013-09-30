@@ -2,6 +2,8 @@ Enabled | PID |  Start   |  Cycle   |   Stop   | ID  | Job Name
 ===============================================================================
 Initialization Jobs:
       1 |   1 | P60000   |          |          |     | dyn.organ_init(&dyn.organs)
+      1 |   1 | P60000   |          |          |     | sensor.concentration_sensor_init(&sensor.concentration_sensor)
+      1 |   1 | P60000   |          |          |     | control.concentration_control_init(&control.concentration_control)
 
 ===============================================================================
 Derivative, Integrate and Dynamic Event
@@ -12,7 +14,11 @@ for job 0:
 ===========================================================================
 automatic Jobs:
       1 |   1 | 0.000000 | 0.000000 |    1e+37 |   1 | sys.input_processor(&sys.exec)
+sensor Jobs:
+      1 |   1 | 0.000000 | 1.000000 |    1e+37 |   2 | sensor.concentration_sensor_update(&sensor.concentration_sensor)
+effector Jobs:
+      1 |   1 | 0.000000 | 1.000000 |    1e+37 |   3 | control.concentration_control(&control.concentration_control)
 automatic_last Jobs:
-      1 |   1 | 0.000000 | 0.100000 |    1e+37 |   2 | sys.var_server_sync(&sys.exec)
+      1 |   1 | 0.000000 | 0.100000 |    1e+37 |   4 | sys.var_server_sync(&sys.exec)
 
 ===============================================================================

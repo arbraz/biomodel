@@ -1,9 +1,18 @@
-/home/Alex1/trick_models/bio/organs/include/organs.h
-/home/Alex1/trick_models/bio/organs/include/organ_params.h
-/home/Alex1/trick_models/bio/organs/include/organ_params.h
-/home/Alex1/trick_models/bio/organs/include/organs.h 1
-/home/Alex1/trick_models/bio/organs/src/concentration_deriv.c
-/home/Alex1/trick_models/bio/organs/src/organ_init.c
-/home/Alex1/trick_models/bio/organs/src/organ_integ.c
-/home/Alex1/trick_models/bio/organs/include/organ_integ.d
-/home/Alex1/trick_models/bio/organs/include/organs.d
+/home/user/git/projects/biomodel/trick_models/bio/organs/include/organ_params.h
+/home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.h
+/home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h
+/home/user/git/projects/biomodel/trick_models/bio/control/include/concentration_control.h 1
+/home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control.c
+/home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control_init.c
+/home/user/git/projects/biomodel/trick_models/bio/organs/include/organ_params.h
+/home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h 1
+/home/user/git/projects/biomodel/trick_models/bio/organs/src/concentration_deriv.c
+/home/user/git/projects/biomodel/trick_models/bio/organs/src/organ_init.c
+/home/user/git/projects/biomodel/trick_models/bio/organs/src/organ_integ.c
+/home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.h 1
+/home/user/git/projects/biomodel/trick_models/bio/sensors/src/concentration_sensor_init.c
+/home/user/git/projects/biomodel/trick_models/bio/sensors/src/concentration_sensor_update.c
+/home/user/git/projects/biomodel/trick_models/bio/control/include/concentration_control.d
+/home/user/git/projects/biomodel/trick_models/bio/organs/include/organ_integ.d
+/home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.d
+/home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.d

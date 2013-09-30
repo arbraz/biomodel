@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<?xml-stylesheet type="text/xsl" href="/home/Alex1/Downloads/07.23.1/docs/trick_s_define.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/home/user/trick/07.23.1/docs/trick_s_define.xsl"?>
 
 <!--Note:
     Firefox 3 fails to process XSLT files if they are on the local hard drive
@@ -15,21 +15,46 @@
 <s_define>
     <title>No Title Specified</title>
     <sim_object>
+        <sim_object_name>control</sim_object_name>
+
+        <structs>
+            <struct>
+                <struct_name>CONCENTRATION_CONTROL</struct_name>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/control/xml/concentration_control.h.xml</link>
+                <default_data>
+                    <file>/home/user/git/projects/biomodel/trick_models/bio/control/include/concentration_control.d</file>
+                </default_data>
+            </struct>
+        </structs>
+
+        <jobs>
+            <job>
+                <job_name>concentration_control</job_name>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/control/xml/concentration_control.c.xml</link>
+            </job>
+            <job>
+                <job_name>concentration_control_init</job_name>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/control/xml/concentration_control_init.c.xml</link>
+            </job>
+        </jobs>
+    </sim_object>
+
+    <sim_object>
         <sim_object_name>dyn</sim_object_name>
 
         <structs>
             <struct>
                 <struct_name>INTEGRATOR</struct_name>
-                <link>/home/Alex1/Downloads/07.23.1/trick_source/sim_services/include/xml/integrator.h.xml</link>
+                <link>/home/user/trick/07.23.1/trick_source/sim_services/include/xml/integrator.h.xml</link>
                 <default_data>
-                    <file>/home/Alex1/trick_models/bio/organs/include/organ_integ.d</file>
+                    <file>/home/user/git/projects/biomodel/trick_models/bio/organs/include/organ_integ.d</file>
                 </default_data>
             </struct>
             <struct>
                 <struct_name>ORGANS</struct_name>
-                <link>/home/Alex1/trick_models/bio/organs/xml/organs.h.xml</link>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/organs/xml/organs.h.xml</link>
                 <default_data>
-                    <file>/home/Alex1/trick_models/bio/organs/include/organs.d</file>
+                    <file>/home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.d</file>
                 </default_data>
             </struct>
         </structs>
@@ -37,15 +62,40 @@
         <jobs>
             <job>
                 <job_name>concentration_deriv</job_name>
-                <link>/home/Alex1/trick_models/bio/organs/xml/concentration_deriv.c.xml</link>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/organs/xml/concentration_deriv.c.xml</link>
             </job>
             <job>
                 <job_name>organ_init</job_name>
-                <link>/home/Alex1/trick_models/bio/organs/xml/organ_init.c.xml</link>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/organs/xml/organ_init.c.xml</link>
             </job>
             <job>
                 <job_name>organ_integ</job_name>
-                <link>/home/Alex1/trick_models/bio/organs/xml/organ_integ.c.xml</link>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/organs/xml/organ_integ.c.xml</link>
+            </job>
+        </jobs>
+    </sim_object>
+
+    <sim_object>
+        <sim_object_name>sensor</sim_object_name>
+
+        <structs>
+            <struct>
+                <struct_name>CONCENTRATION_SENSOR</struct_name>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/sensors/xml/concentration_sensor.h.xml</link>
+                <default_data>
+                    <file>/home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.d</file>
+                </default_data>
+            </struct>
+        </structs>
+
+        <jobs>
+            <job>
+                <job_name>concentration_sensor_init</job_name>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/sensors/xml/concentration_sensor_init.c.xml</link>
+            </job>
+            <job>
+                <job_name>concentration_sensor_update</job_name>
+                <link>/home/user/git/projects/biomodel/trick_models/bio/sensors/xml/concentration_sensor_update.c.xml</link>
             </job>
         </jobs>
     </sim_object>
@@ -56,9 +106,9 @@
         <structs>
             <struct>
                 <struct_name>EXECUTIVE</struct_name>
-                <link>/home/Alex1/Downloads/07.23.1/trick_source/sim_services/include/xml/executive.h.xml</link>
+                <link>/home/user/trick/07.23.1/trick_source/sim_services/include/xml/executive.h.xml</link>
                 <default_data>
-                    <file>/home/Alex1/Downloads/07.23.1/trick_source/sim_services/include/executive.d</file>
+                    <file>/home/user/trick/07.23.1/trick_source/sim_services/include/executive.d</file>
                 </default_data>
             </struct>
         </structs>
@@ -66,11 +116,11 @@
         <jobs>
             <job>
                 <job_name>input_processor</job_name>
-                <link>/home/Alex1/Downloads/07.23.1/trick_source/sim_services/input_processor/xml/input_processor.c.xml</link>
+                <link>/home/user/trick/07.23.1/trick_source/sim_services/input_processor/xml/input_processor.c.xml</link>
             </job>
             <job>
                 <job_name>var_server_sync</job_name>
-                <link>/home/Alex1/Downloads/07.23.1/trick_source/sim_services/exec/xml/variable_server_sync.c.xml</link>
+                <link>/home/user/trick/07.23.1/trick_source/sim_services/exec/xml/variable_server_sync.c.xml</link>
             </job>
         </jobs>
     </sim_object>

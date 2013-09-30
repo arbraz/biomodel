@@ -1,20 +1,20 @@
 
-/* $Id: S_source.c auto 2014/03/18 14:50:33 Alex1 *//*
+/* $Id: S_source.c auto 2013/09/30 01:36:58 user *//*
 TITLE: No Title Specified
-DATE:  Tue Mar 18 14:50:33 2014
-USER:  Alex1
+DATE:  Mon Sep 30 01:36:58 2013
+USER:  user
 */
 
 
 sys.exec.work.initialization_pass = 1 ;
 sys.exec.work.num_child = 0 ;
-sys.exec.work.num_job = 3 ;
-sys.exec.work.num_all_job = 6 ;
+sys.exec.work.num_job = 5 ;
+sys.exec.work.num_all_job = 10 ;
 sys.exec.work.job_select = alloc(2) ;
-sys.exec.work.job_complete = alloc(3) ;
+sys.exec.work.job_complete = alloc(5) ;
 sys.exec.work.job_que = alloc(2) ;
-sys.exec.work.job_que[0] = alloc(3) ;
-sys.exec.work.job_que[1] = alloc(3) ;
+sys.exec.work.job_que[0] = alloc(5) ;
+sys.exec.work.job_que[1] = alloc(5) ;
 
 sys.exec.work.job_que_id = alloc(2) ;
 sys.exec.work.num_jobs_on_que = alloc(2) ;
@@ -41,7 +41,7 @@ sys.exec.in.rt_restrict_proc[0] = No , No ;
 sys.exec.in.rt_nonpreempt_proc[0] = No , No ;
 sys.exec.in.rt_semaphores[0] = No , No ;
 sys.exec.in.frame_log = No ;
-sys.exec.out.frame_job_time = alloc(3) ;
+sys.exec.out.frame_job_time = alloc(5) ;
 sys.exec.out.frame_sched_times = alloc(2) ;
 sys.exec.work.frame_last_time = alloc(2) ;
 sys.exec.record.directory = "" ;
@@ -80,7 +80,7 @@ sys.exec.rt_log.group[1].cycle {s} = 1.0e-6 ;
 sys.exec.rt_log.group[1].ref = alloc(2) ;
 sys.exec.rt_log.group[1].ref[0] =
     "sys.exec.out.frame_sched_times[1-1]" ,
-    "sys.exec.out.frame_job_time[0-2]" ;
+    "sys.exec.out.frame_job_time[0-4]" ;
 
 sys.exec.rt_log.group[2].record = No ;
 sys.exec.rt_log.group[2].name   = "mem_stats" ;
@@ -126,6 +126,38 @@ sys.job[0].in.num_job_depend = 0 ;
 sys.job[0].in.job_depend = alloc(1) ;
 sys.job[0].in.job_depend[0] = 0 ;
 
+sensor.job[1].in.job_select = 7 ;
+sensor.job[1].in.job_class = 11 ;	/* sensor */
+sensor.job[1].in.phase = 60000 ;
+sensor.job[1].in.name = "sensor.concentration_sensor_update(&sensor.concentration_sensor)" ;
+sensor.job[1].in.old_style_name = "sensor.concentration_sensor_update(sensor.concentration_sensor)" ;
+sensor.job[1].in.tag = "" ;
+sensor.job[1].in.cycle = 1 ;
+sensor.job[1].in.start = 0 ;
+sensor.job[1].in.stop = 1e+37 ;
+sensor.job[1].in.process_id = 1 ;
+sensor.job[1].in.job_count = 7 ;
+sensor.job[1].in.enabled = 1 ;
+sensor.job[1].in.num_job_depend = 0 ;
+sensor.job[1].in.job_depend = alloc(1) ;
+sensor.job[1].in.job_depend[0] = 0 ;
+
+control.job[1].in.job_select = 9 ;
+control.job[1].in.job_class = 16 ;	/* effector */
+control.job[1].in.phase = 60000 ;
+control.job[1].in.name = "control.concentration_control(&control.concentration_control)" ;
+control.job[1].in.old_style_name = "control.concentration_control(control.concentration_control)" ;
+control.job[1].in.tag = "" ;
+control.job[1].in.cycle = 1 ;
+control.job[1].in.start = 0 ;
+control.job[1].in.stop = 1e+37 ;
+control.job[1].in.process_id = 1 ;
+control.job[1].in.job_count = 9 ;
+control.job[1].in.enabled = 1 ;
+control.job[1].in.num_job_depend = 0 ;
+control.job[1].in.job_depend = alloc(1) ;
+control.job[1].in.job_depend[0] = 0 ;
+
 sys.job[1].in.job_select = 2 ;
 sys.job[1].in.job_class = 19 ;	/* automatic_last */
 sys.job[1].in.phase = 60000 ;
@@ -159,6 +191,34 @@ dyn.job[0].in.enabled = 1 ;
 dyn.job[0].in.num_job_depend = 0 ;
 dyn.job[0].in.job_depend = alloc(1) ;
 dyn.job[0].in.job_depend[0] = 0 ;
+
+sensor.job[0].in.job_select = 6 ;
+sensor.job[0].in.job_class = 0 ;
+sensor.job[0].in.phase = 60000 ;
+sensor.job[0].in.name = "sensor.concentration_sensor_init(&sensor.concentration_sensor)" ;
+sensor.job[0].in.old_style_name = "sensor.concentration_sensor_init(sensor.concentration_sensor)" ;
+sensor.job[0].in.tag = "" ;
+sensor.job[0].in.start = 0.0 ;
+sensor.job[0].in.process_id = 1 ;
+sensor.job[0].in.job_count = 6 ;
+sensor.job[0].in.enabled = 1 ;
+sensor.job[0].in.num_job_depend = 0 ;
+sensor.job[0].in.job_depend = alloc(1) ;
+sensor.job[0].in.job_depend[0] = 0 ;
+
+control.job[0].in.job_select = 8 ;
+control.job[0].in.job_class = 0 ;
+control.job[0].in.phase = 60000 ;
+control.job[0].in.name = "control.concentration_control_init(&control.concentration_control)" ;
+control.job[0].in.old_style_name = "control.concentration_control_init(control.concentration_control)" ;
+control.job[0].in.tag = "" ;
+control.job[0].in.start = 0.0 ;
+control.job[0].in.process_id = 1 ;
+control.job[0].in.job_count = 8 ;
+control.job[0].in.enabled = 1 ;
+control.job[0].in.num_job_depend = 0 ;
+control.job[0].in.job_depend = alloc(1) ;
+control.job[0].in.job_depend[0] = 0 ;
 
 	/* RESTART JOB DATA */
 
@@ -209,6 +269,8 @@ dyn.job[2].in.job_depend[0] = 0 ;
 #include "Default_data/S_sys_exec_executive.d"
 #include "Default_data/S_dyn_organs_organs.d"
 #include "Default_data/S_dyn_integ_organ_integ.d"
+#include "Default_data/S_sensor_concentration_sensor_concentration_sensor.d"
+#include "Default_data/S_control_concentration_control_concentration_control.d"
 
 sys.exec.work.terminate_time  = 1.0e20 ;
 sys.exec.work.checkpoint_time = 1.0e20 ;

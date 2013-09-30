@@ -1,8 +1,8 @@
 
-# Dependencies for src files in /home/Alex1/trick_models/bio/organs/src/
-/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/concentration_deriv.o: \
- /home/Alex1/trick_models/bio/organs/src/concentration_deriv.c \
- /home/Alex1/trick_models/bio/organs/include/organs.h \
+# Dependencies for src files in /home/user/git/projects/biomodel/trick_models/bio/control/src/
+/home/user/git/projects/biomodel/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control.o: \
+ /home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control.c \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
  ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
  ${TRICK_HOME}/trick_source/sim_services/include/Flag.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
@@ -13,11 +13,12 @@
  ${TRICK_HOME}/trick_source/sim_services/include/value.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
- /home/Alex1/trick_models/bio/organs/include/./organ_params.h \
- ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
- ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h 
-/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_init.o: /home/Alex1/trick_models/bio/organs/src/organ_init.c \
- /home/Alex1/trick_models/bio/organs/include/organs.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h \
+ /home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.h \
+ /home/user/git/projects/biomodel/trick_models/bio/control/include/concentration_control.h 
+/home/user/git/projects/biomodel/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control_init.o: \
+ /home/user/git/projects/biomodel/trick_models/bio/control/src/concentration_control_init.c \
+ /home/user/git/projects/biomodel/trick_models/bio/control/include/concentration_control.h \
  ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
  ${TRICK_HOME}/trick_source/sim_services/include/Flag.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
@@ -28,13 +29,44 @@
  ${TRICK_HOME}/trick_source/sim_services/include/value.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
- /home/Alex1/trick_models/bio/organs/include/./organ_params.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h \
+ /home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.h 
+
+# Dependencies for src files in /home/user/git/projects/biomodel/trick_models/bio/organs/src/
+/home/user/git/projects/biomodel/trick_models/bio/organs/object_${TRICK_HOST_CPU}/concentration_deriv.o: \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/src/concentration_deriv.c \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
  ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
- ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h 
-/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_integ.o: /home/Alex1/trick_models/bio/organs/src/organ_integ.c \
+ ${TRICK_HOME}/trick_source/sim_services/include/Flag.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_byteswap.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_error_hndlr.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/attributes.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/get_size_macro.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/value.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h 
+/home/user/git/projects/biomodel/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_init.o: \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/src/organ_init.c \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/Flag.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_byteswap.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_error_hndlr.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/attributes.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/get_size_macro.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/value.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h 
+/home/user/git/projects/biomodel/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_integ.o: \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/src/organ_integ.c \
  ${TRICK_HOME}/trick_source/sim_services/include/integrator.h \
  ${TRICK_HOME}/trick_source/sim_services/include/Flag.h \
- /home/Alex1/trick_models/bio/organs/include/organs.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
  ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_byteswap.h \
@@ -44,9 +76,39 @@
  ${TRICK_HOME}/trick_source/sim_services/include/value.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
- /home/Alex1/trick_models/bio/organs/include/./organ_params.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h 
+
+# Dependencies for src files in /home/user/git/projects/biomodel/trick_models/bio/sensors/src/
+/home/user/git/projects/biomodel/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_init.o: \
+ /home/user/git/projects/biomodel/trick_models/bio/sensors/src/concentration_sensor_init.c \
+ /home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.h \
  ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
- ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h 
+ ${TRICK_HOME}/trick_source/sim_services/include/Flag.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_byteswap.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_error_hndlr.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/attributes.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/get_size_macro.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/value.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h 
+/home/user/git/projects/biomodel/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_update.o: \
+ /home/user/git/projects/biomodel/trick_models/bio/sensors/src/concentration_sensor_update.c \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/Flag.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_byteswap.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_error_hndlr.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/attributes.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/get_size_macro.h \
+ ${TRICK_HOME}/trick_source/sim_services/include/value.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
+ ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h \
+ /home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.h 
 
 # Dependencies for S_source.c
 lib_${TRICK_HOST_CPU}/S_source.o: S_source.c \
@@ -69,7 +131,6 @@ lib_${TRICK_HOST_CPU}/S_source.o: S_source.c \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_byteswap.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/trick_error_hndlr.h \
- ${TRICK_HOME}/trick_source/sim_services/include/attributes.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc_proto.h \
  ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
  ${TRICK_HOME}/trick_source/trick_utils/math/include/rand_generator.h \
@@ -82,7 +143,6 @@ lib_${TRICK_HOST_CPU}/S_source.o: S_source.c \
  ${TRICK_HOME}/trick_source/sim_services/include/child_ipc.h \
  ${TRICK_HOME}/trick_source/sim_services/include/jobdata.h \
  ${TRICK_HOME}/trick_source/sim_services/include/trick_malf.h \
- ${TRICK_HOME}/trick_source/sim_services/include/attributes.h \
  ${TRICK_HOME}/trick_source/sim_services/include/gmtclock.h \
  ${TRICK_HOME}/trick_source/sim_services/include/input_processor.h \
  ${TRICK_HOME}/trick_source/sim_services/include/variable_server.h \
@@ -98,17 +158,13 @@ lib_${TRICK_HOST_CPU}/S_source.o: S_source.c \
  ${TRICK_HOME}/trick_source/sim_services/include/data_record.h \
  ${TRICK_HOME}/trick_source/sim_services/include/io_proto.h \
  ${TRICK_HOME}/trick_source/sim_services/include/io_alloc.h \
- ${TRICK_HOME}/trick_source/trick_utils/trick_adt/include/avl.h \
- ${TRICK_HOME}/trick_source/trick_utils/trick_adt/include/lqueue.h \
  ${TRICK_HOME}/trick_source/sim_services/include/input_processor_proto.h \
  ${TRICK_HOME}/trick_source/sim_services/include/input_processor.h \
  ${TRICK_HOME}/trick_source/trick_utils/units/include/units_conv.h \
  ${TRICK_HOME}/trick_source/sim_services/include/trick_malf.h \
  ${TRICK_HOME}/trick_source/sim_services/include/input_processor_error.h \
  ${TRICK_HOME}/trick_source/sim_services/include/jobdata.h \
- ${TRICK_HOME}/trick_source/sim_services/include/data_record.h \
  ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
- ${TRICK_HOME}/trick_source/sim_services/include/io_alloc.h \
  ${TRICK_HOME}/trick_source/sim_services/include/integrator.h \
  ${TRICK_HOME}/trick_source/trick_utils/math/include/trick_math.h \
  ${TRICK_HOME}/trick_source/trick_utils/math/include/vector_macros.h \
@@ -119,10 +175,8 @@ lib_${TRICK_HOST_CPU}/S_source.o: S_source.c \
  ${TRICK_HOME}/trick_source/trick_utils/math/include/wave_form.h \
  ${TRICK_HOME}/trick_source/trick_utils/math/include/reference_frame.h \
  ${TRICK_HOME}/trick_source/trick_utils/math/include/rand_generator.h \
- /home/Alex1/trick_models/bio/organs/include/organs.h \
- ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
- ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
- /home/Alex1/trick_models/bio/organs/include/./organ_params.h \
- ${TRICK_HOME}/trick_source/sim_services/include/regula_falsi.h \
- ${TRICK_HOME}/trick_source/trick_utils/comm/include/tc.h \
+ /home/user/git/projects/biomodel/trick_models/bio/control/include/concentration_control.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/organs.h \
+ /home/user/git/projects/biomodel/trick_models/bio/organs/include/./organ_params.h \
+ /home/user/git/projects/biomodel/trick_models/bio/sensors/include/concentration_sensor.h \
  ${TRICK_HOME}/trick_source/sim_services/include/executive.h 

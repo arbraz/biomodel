@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<?xml-stylesheet type="text/xsl" href="/home/Alex1/Downloads/07.23.1/docs/trick_module.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/home/user/trick/07.23.1/docs/trick_module.xsl"?>
 
 <!--Note:
     Firefox 3 fails to process XSLT files if they are on the local hard drive
@@ -14,7 +14,7 @@
 
 <file>
     <file_name> organ_init.c </file_name>
-    <full_path_file_name> /home/Alex1/trick_models/bio/organs/src/organ_init.c </full_path_file_name>
+    <full_path_file_name> /home/user/git/projects/biomodel/trick_models/bio/organs/src/organ_init.c </full_path_file_name>
     <trick_header>
         <references>
         </references>

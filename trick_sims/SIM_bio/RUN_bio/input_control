@@ -1,0 +1,36 @@
+/*
+Input deck for organ on a chip modeling with simple concentration sensor
+and a configurable PID controller.
+
+Some notables:
+
+(1) The sensor delays output by one cycle.   The timestep of the sensor operation can be changed by modifying SENSOR_RATE in the S_define file.   This will require a re-CP to take.
+(2) The control rate can similarly be adjusted in S_define but should not be smaller than the SENSOR_RATE
+(3) Change the desired Cm concentration "C_desired" in this input deck.    The Kp, Ki, and Kd gains can be set in Modified_data/concentration_control.d
+(4) A bias term for the sensor measurement "sensor.concentration_sensor.bias" is included below and may be manipulated in this input deck or via monte carlo.
+(5) The DP_organ_control provides a sample set of plots to track control performance and sensor error.
+(6) Modify and run the Trick_profile_07.23.1 file included at the top level of this git repo to set your TRICK_CFLAGS appropriately.
+
+Dr. Timothy P. Crain
+Intuitive Machines, LLC
+20140302
+Houston, TX
+*/
+
+#include "S_default.dat"
+//#include "Modified_data/realtime.d"
+#include "Modified_data/organs.dr"
+//#include "Modified_data/data_record.d"
+
+#include "Modified_data/concentration_control.d"
+
+control.concentration_control.C_desired = 1.2;
+sensor.concentration_sensor.bias = 0.0;
+
+sys.exec.sim_com.panel_size = Panel_Size_Lite ;
+//sys.exec.in.stripchart_input_file = "organs.sc" ;
+
+sys.exec.in.tv = On ;
+sys.exec.in.tv_input_file = "organs.tv" ;
+
+stop = 200.0;

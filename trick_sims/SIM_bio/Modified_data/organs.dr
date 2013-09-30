@@ -19,7 +19,13 @@ sys.exec.record.group[DR_GROUP_ID].ref[0] =
         "dyn.organs.Cm" ,
         "dyn.organs.dC_liver_dt" ,
         "dyn.organs.dC_lung_dt" ,
-        "dyn.organs.dC_tissue_dt" ;
+        "dyn.organs.dC_tissue_dt" ,
+	"sensor.concentration_sensor.Cm_measured",
+	"sensor.concentration_sensor.Cm_last",
+	"sensor.concentration_sensor.bias" ,
+        "control.concentration_control.error",
+        "control.concentration_control.control_increment",
+        "control.concentration_control.control_command";
 
 DR_GROUP_ID++ ;
 

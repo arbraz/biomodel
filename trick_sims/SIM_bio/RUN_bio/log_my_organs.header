@@ -6,3 +6,9 @@ log_my_organs	double	--	dyn.organs.Cm
 log_my_organs	double	--	dyn.organs.dC_liver_dt
 log_my_organs	double	--	dyn.organs.dC_lung_dt
 log_my_organs	double	--	dyn.organs.dC_tissue_dt
+log_my_organs	double	--	sensor.concentration_sensor.Cm_measured
+log_my_organs	double	--	sensor.concentration_sensor.Cm_last
+log_my_organs	double	--	sensor.concentration_sensor.bias
+log_my_organs	double	--	control.concentration_control.error
+log_my_organs	double	--	control.concentration_control.control_increment
+log_my_organs	double	--	control.concentration_control.control_command

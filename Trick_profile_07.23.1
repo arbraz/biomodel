@@ -1,0 +1,37 @@
+
+# .Trick_profile_07.23.1
+# created Sun Sep 29 10:36:44 2013
+
+TRICK_VER="07.23.1" ; export TRICK_VER
+TRICK_HOME="/home/user/trick/${TRICK_VER}" ; export TRICK_HOME
+TRICK_USER_HOME="/home/user/trick_sims" ; export TRICK_USER_HOME
+TRICK_CATALOG_HOME="/home/user/trick_catalog" ; export TRICK_CATALOG_HOME
+TRICK_USER_PROFILE="/home/user/.Trick_user_profile" ; export TRICK_USER_PROFILE
+TRICK_EDITOR="vi" ; export TRICK_EDITOR
+TRICK_PRINTER_NAME="" ; export TRICK_PRINTER_NAME
+TRICK_PRINT_CMD="lpr" ; export TRICK_PRINT_CMD
+
+BIO_HOME="/home/user/git/projects/biomodel" ; export BIO_HOME
+TRICK_USER_HOME="${BIO_HOME}/trick_sims" ; export TRICK_USER_HOME
+
+# Choices for TRICK_DEBUG: 0 = "" , 1 = "-g" , 2 = "-O" , 3 = "-O2" , 4 = "-O3"
+TRICK_DEBUG=0 ; export TRICK_DEBUG
+
+if [ ! -d ${TRICK_HOME} ] ; then
+   echo "TRICK_HOME=$TRICK_HOME doesn't exist... exiting .Trick_profile\!\!"
+elif [ ! -f ${TRICK_HOME}/bin/Trick.profile ] ;  then
+   echo "${TRICK_HOME}/bin/Trick.profile doesn't exist... exiting .Trick_profile\!\!"
+else
+   . ${TRICK_HOME}/bin/Trick.profile
+
+   # User Environment
+   if [ x${TRICK_USER_PROFILE} != x ] ; then
+      if [ -f ${TRICK_USER_PROFILE} ] ; then
+         . ${TRICK_USER_PROFILE}
+      fi
+   fi
+
+fi
+
+#TRICK_CFLAGS="-I${TRICK_HOME}/trick_sims/SIM_cannon -I${TRICK_HOME}/trick_models"; export TRICK_CFLAGS
+TRICK_CFLAGS="-I${BIO_HOME}/trick_sims/SIM_bio -I${BIO_HOME}/trick_models"; export TRICK_CFLAGS

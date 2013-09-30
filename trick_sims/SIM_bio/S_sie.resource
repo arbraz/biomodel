@@ -1647,3 +1647,68 @@ set trick_templates(params_T.Mlu) \
 set trick_templates(params_T.kinj) \
 {Not Specified	double	InputAndOutput	--	other	0	NULL}
 
+
+set trick_variables(sensor.concentration_sensor) \
+{Declared in S_define	CONCENTRATION_SENSOR	InputAndOutput	--	data_structure_address	0	bias	job}
+
+set trick_variables(sensor.job) \
+{Job Scheduling Info	JOBDATA	InputAndOutput	--	data_structure_address	1	2	in	NULL}
+
+set trick_templates(CONCENTRATION_SENSOR.bias) \
+{bias in concentration reading	double	InputAndOutput	--	other	0	Cm_measured}
+
+set trick_templates(CONCENTRATION_SENSOR.Cm_measured) \
+{measured concentration	double	InputAndOutput	--	other	0	Cm_last}
+
+set trick_templates(CONCENTRATION_SENSOR.Cm_last) \
+{measured concentration	double	InputAndOutput	--	other	0	meas_time}
+
+set trick_templates(CONCENTRATION_SENSOR.meas_time) \
+{measurement time tag	double	InputAndOutput	--	other	0	connection}
+
+set trick_templates(CONCENTRATION_SENSOR.connection) \
+{Socket connection for sending position	TCDevice	InputAndOutput	--	data_structure_address	0	disabled	NULL}
+
+
+set trick_variables(control.concentration_control) \
+{Declared in S_define	CONCENTRATION_CONTROL	InputAndOutput	--	data_structure_address	0	C_desired	job}
+
+set trick_variables(control.job) \
+{Job Scheduling Info	JOBDATA	InputAndOutput	--	data_structure_address	1	2	in	NULL}
+
+set trick_templates(CONCENTRATION_CONTROL.C_desired) \
+{desired concentration value	double	InputAndOutput	--	other	0	Kp}
+
+set trick_templates(CONCENTRATION_CONTROL.Kp) \
+{proportional gain	double	InputAndOutput	--	other	0	Ki}
+
+set trick_templates(CONCENTRATION_CONTROL.Ki) \
+{integral gains	double	InputAndOutput	--	other	0	Kd}
+
+set trick_templates(CONCENTRATION_CONTROL.Kd) \
+{derivative gains	double	InputAndOutput	--	other	0	error}
+
+set trick_templates(CONCENTRATION_CONTROL.error) \
+{Not Specified	double	InputAndOutput	--	other	0	error_integral}
+
+set trick_templates(CONCENTRATION_CONTROL.error_integral) \
+{Not Specified	double	InputAndOutput	--	other	0	error_rate}
+
+set trick_templates(CONCENTRATION_CONTROL.error_rate) \
+{Not Specified	double	InputAndOutput	--	other	0	control_increment}
+
+set trick_templates(CONCENTRATION_CONTROL.control_increment) \
+{change to control variable per cycle	double	InputAndOutput	--	other	0	control_command}
+
+set trick_templates(CONCENTRATION_CONTROL.control_command) \
+{total control command	double	InputAndOutput	--	other	0	error_last}
+
+set trick_templates(CONCENTRATION_CONTROL.error_last) \
+{Not Specified	double	InputAndOutput	--	other	0	error_integral_limit}
+
+set trick_templates(CONCENTRATION_CONTROL.error_integral_limit) \
+{Not Specified	double	InputAndOutput	--	other	0	time}
+
+set trick_templates(CONCENTRATION_CONTROL.time) \
+{Not Specified	double	InputAndOutput	--	other	0	NULL}
+
