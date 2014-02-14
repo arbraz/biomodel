@@ -1,14 +1,14 @@
 
-Monte Carlo execution reached termination running 500 out of 500 runs (0 errors).
+Monte Carlo execution reached termination running 100 out of 100 runs (0 errors).
 Machine work unit breakdown:
 ----------------------------------------------------------------------
                   machine   units  (units %) cpu_time (s) cpu/unit (s)
 ----------------------------------------------------------------------
-  1. dr1hgh1.bmen.tamu.edu     500  (100.00%)         8.56         0.02
+  1. dr1hgh1.bmen.tamu.edu     100  (100.00%)         1.58         0.02
 
-Total monte carlo time taken : 9.30 
+Total monte carlo time taken : 1.79 
 Actual average time per unit ( sum of CPU time / number of runs ) : 0.02 
 Effective average time per unit ( total time / number of runs ) : 0.02 
-Speedup ( sum of CPU time / total time ) : 0.92 
-Efficency ( Speedup / num slaves ) : 92.01% 
+Speedup ( sum of CPU time / total time ) : 0.88 
+Efficency ( Speedup / num slaves ) : 88.34% 
 
