@@ -7,3 +7,5 @@ Stripchart:
    y_max = 10.0
    x_variable = system.time
    dyn.organs.Cli
+   dyn.organs.Clu
+   dyn.organs.Cm

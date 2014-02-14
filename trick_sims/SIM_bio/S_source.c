@@ -1,7 +1,7 @@
 
-/* $Id: S_source.c auto 2014/02/11 15:38:05 Alex */
-char *version_date_tag = "@(#)CP Version 07.23.1-1, Tue Feb 11 15:38:05 2014" ;
-char *build_date = "Tue Feb 11 15:38:05 2014" ;
+/* $Id: S_source.c auto 2014/02/13 10:18:55 Alex1 */
+char *version_date_tag = "@(#)CP Version 07.23.1-1, Thu Feb 13 10:18:55 2014" ;
+char *build_date = "Thu Feb 13 10:18:55 2014" ;
 char *current_version = "07.23.1-1" ;
 /* Headers that are always included for each sim */
 
@@ -1165,29 +1165,29 @@ int trick_function_calls(char *name , VALUE_LIST *V ) {
 #endif
 
 ENV_VAL local_env[] = {
-{ "TRICK_CATALOG_HOME" , "/home/Alex/trick_catalog" } ,
-{ "TRICK_CAT_MGR_HOME" , "/home/Alex/Downloads/07.23.1/catalog" } ,
+{ "TRICK_CATALOG_HOME" , "/home/Alex1/trick_catalog" } ,
+{ "TRICK_CAT_MGR_HOME" , "/home/Alex1/Downloads/07.23.1/catalog" } ,
 { "TRICK_CC" , "cc" } ,
-{ "TRICK_CFLAGS" , " -I/home/Alex/trick_models" } ,
+{ "TRICK_CFLAGS" , " -I/home/Alex1/trick_models" } ,
 { "TRICK_CPPC" , "c++" } ,
 { "TRICK_DEBUG" , "0" } ,
 { "TRICK_EDITOR" , "vi" } ,
 { "TRICK_EXEC_LINK_LIBS" , "" } ,
 { "TRICK_FORCE_32BIT" , "0" } ,
 { "TRICK_GTE_EXT" , "" } ,
-{ "TRICK_HOME" , "/home/Alex/Downloads/07.23.1" } ,
+{ "TRICK_HOME" , "/home/Alex1/Downloads/07.23.1" } ,
 { "TRICK_HOST_CPU" , "Linux_4.1_25" } ,
 { "TRICK_HOST_CPU_USER_SUFFIX" , "" } ,
 { "TRICK_HOST_TYPE" , "Linux" } ,
 { "TRICK_ICG_EXCLUDE" , "" } ,
 { "TRICK_MAKE" , "" } ,
-{ "TRICK_PATH" , "/home/Alex/Downloads/07.23.1/bin_Linux_4.1_25:/home/Alex/Downloads/07.23.1/bin" } ,
+{ "TRICK_PATH" , "/home/Alex1/Downloads/07.23.1/bin_Linux_4.1_25:/home/Alex1/Downloads/07.23.1/bin" } ,
 { "TRICK_PRINTER_NAME" , "" } ,
 { "TRICK_PRINT_CMD" , "lpr" } ,
-{ "TRICK_USER_CSHRC" , "/home/Alex/.Trick_user_cshrc" } ,
-{ "TRICK_USER_HOME" , "/home/Alex/trick_sims" } ,
+{ "TRICK_USER_CSHRC" , "/home/Alex1/.Trick_user_cshrc" } ,
+{ "TRICK_USER_HOME" , "/home/Alex1/trick_sims" } ,
 { "TRICK_USER_LINK_LIBS" , "" } ,
-{ "TRICK_USER_PROFILE" , "/home/Alex/.Trick_user_profile" } ,
+{ "TRICK_USER_PROFILE" , "/home/Alex1/.Trick_user_profile" } ,
 { "TRICK_VER" , "07.23.1" } 
 };
 

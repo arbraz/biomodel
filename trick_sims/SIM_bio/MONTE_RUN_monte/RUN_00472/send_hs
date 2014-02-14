@@ -1,0 +1,22 @@
+| |dr1hgh1.bmen.tamu.edu|1|30.00|2014/02/13,10:52:29| [31mSent results for run_num = 472[00m
+
+| |dr1hgh1.bmen.tamu.edu|1|30.00|2014/02/13,10:52:29| 
+SIMULATION TERMINATED IN
+  PROCESS: 1
+  JOB/ROUTINE: 2/sim_services/mains/master.c
+DIAGNOSTIC:
+Simulation reached input termination time.
+
+LAST JOB CALLED: sys.var_server_sync(&sys.exec)
+
+       SIMULATION START TIME:        0.000
+        SIMULATION STOP TIME:       30.000
+     SIMULATION ELAPSED TIME:       30.000
+         ACTUAL ELAPSED TIME:        0.013
+        ACTUAL CPU TIME USED:        0.012
+    SIMULATION / ACTUAL TIME:     2240.667
+       SIMULATION / CPU TIME:     2500.417
+  ACTUAL INITIALIZATION TIME:        0.000
+     INITIALIZATION CPU TIME:        0.000
+
+

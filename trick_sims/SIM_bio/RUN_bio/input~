@@ -8,4 +8,4 @@ sys.exec.sim_com.panel_size = Panel_Size_Lite ;
 sys.exec.in.tv = On ;
 sys.exec.in.tv_input_file = "organs.tv" ;
 
-stop = 10.0 ;
+stop = 50.0;

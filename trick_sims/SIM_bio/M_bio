@@ -1,0 +1,12 @@
+NUM_RUNS:500
+
+VARS:
+dyn.organs.params.Mlu {--} gaussian(seed=1, sigma = 0.01,mu = 5,rel_min = -5,rel_max = 5);
+dyn.organs.params.Mli {--} gaussian(seed=1, sigma = 0.01,mu = 28,rel_min = -5,rel_max = 5);
+dyn.organs.params.Vlu {--} gaussian(seed=2, sigma = 0.1, mu = 4.7,rel_min = -4.7, rel_max = 4.7);
+dyn.organs.params.Vli {--} gaussian(seed=2, sigma = 0.1, mu = 22.7,rel_min = -5, rel_max = 5);
+dyn.organs.params.Plu {--} gaussian(seed=1, sigma = 0.01,mu = 1.55,rel_min = -1,rel_max = 1);
+dyn.organs.params.Pli {--} gaussian(seed=1, sigma = 0.01,mu = 4.96,rel_min = -2,rel_max = 2);
+
+DATA:
+

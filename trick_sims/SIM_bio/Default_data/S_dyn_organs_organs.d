@@ -1,14 +1,14 @@
 /*
  * This default data file was taken from:
- * /home/Alex/trick_models/bio/organs/include/organs.d
+ * /home/Alex1/trick_models/bio/organs/include/organs.d
  * The header file is:
- * /home/Alex/trick_models/bio/organs/include/organs.h
+ * /home/Alex1/trick_models/bio/organs/include/organs.h
  * The type substitution is:
  * ORGANS -> dyn.organs
  */
 
 
-/* $Id: S_source.c auto 2014/02/11 15:38:05 Alex */
+/* $Id: S_source.c auto 2014/02/13 10:18:55 Alex1 */
 
 dyn.organs.Cli = 0.0 ;
 dyn.organs.Clu = 0.0 ;

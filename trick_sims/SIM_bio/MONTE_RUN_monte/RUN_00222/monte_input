@@ -1,0 +1,11 @@
+dyn.organs.params.Mlu {--} = 0g4013e3ad141b8e2b /*       4.97233993 */ ;
+dyn.organs.params.Mli {--} = 0g403bf8eb4506e38b /*      27.97233993 */ ;
+dyn.organs.params.Vlu {--} = 0g4012ac2dd1f38790 /*       4.66814354 */ ;
+dyn.organs.params.Vli {--} = 0g4036ab0b747ce1e4 /*      22.66814354 */ ;
+dyn.organs.params.Plu {--} = 0g3ff85b811d3b0578 /*       1.52233993 */ ;
+dyn.organs.params.Pli {--} = 0g4013bab7518c3202 /*       4.93233993 */ ;
+sys.exec.rt_log.directory = "./MONTE_RUN_monte/RUN_00222" ;
+sys.exec.record.directory = "./MONTE_RUN_monte/RUN_00222" ;
+sys.exec.work.run_dir = "./MONTE_RUN_monte/RUN_00222" ;
+sys.exec.work.output_dir = "./MONTE_RUN_monte/RUN_00222" ;
+sys.exec.monte.work.curr_run = 222 ;
