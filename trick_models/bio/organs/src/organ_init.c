@@ -19,8 +19,10 @@ int organ_init(
   O->params.Vli = O->params.Vli ;
   O->params.Vlu = O->params.Vlu ;
   O->params.Vm = O->params.Vm ;
-  O->params.Km_p_450 = O->params.Km_p_450 ;
-  O->params.Vmax_p_450 = O->params.Vmax_p_450 ;
+  O->params.Km_p_450lu = O->params.Km_p_450lu ;
+  O->params.Vmax_p_450lu = O->params.Vmax_p_450lu ;
+  O->params.Km_p_450li = O->params.Km_p_450li ;
+  O->params.Vmax_p_450li = O->params.Vmax_p_450li ;
   O->params.Mli = O->params.Mli ;
   O->params.Mlu = O->params.Mlu ;
   O->params.kinj = O->params.kinj ;

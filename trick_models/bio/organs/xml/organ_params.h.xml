@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<?xml-stylesheet type="text/xsl" href="/home/Alex/Downloads/07.23.1/docs/trick_struct.xsl"?>
+<?xml-stylesheet type="text/xsl" href="/home/Alex1/Downloads/07.23.1/docs/trick_struct.xsl"?>
 
 <!--Note:
     Firefox 3 fails to process XSLT files if they are on the local hard drive
@@ -14,7 +14,7 @@
 
 <file>
     <file_name> organ_params.h </file_name>
-    <full_path_file_name> /home/Alex/trick_models/bio/organs/include/organ_params.h </full_path_file_name>
+    <full_path_file_name> /home/Alex1/trick_models/bio/organs/include/organ_params.h </full_path_file_name>
     <trick_header>
         <references>
         </references>
@@ -93,14 +93,28 @@
                 <comment>tissue V param</comment>
             </member>
             <member>
-                <pname>Km_p_450</pname>
+                <pname>Km_p_450lu</pname>
                 <type>double</type>
                 <dims>scalar</dims>
                 <units>--</units>
                 <comment>Km param</comment>
             </member>
             <member>
-                <pname>Vmax_p_450</pname>
+                <pname>Km_p_450li</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Km param</comment>
+            </member>
+            <member>
+                <pname>Vmax_p_450lu</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Vmax p-450 param</comment>
+            </member>
+            <member>
+                <pname>Vmax_p_450li</pname>
                 <type>double</type>
                 <dims>scalar</dims>
                 <units>--</units>

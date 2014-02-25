@@ -8,7 +8,7 @@
  */
 
 
-/* $Id: S_source.c auto 2014/02/13 10:18:55 Alex1 */
+/* $Id: S_source.c auto 2014/02/25 15:40:29 Alex1 */
 
 dyn.organs.Cli = 0.0 ;
 dyn.organs.Clu = 0.0 ;
@@ -21,8 +21,10 @@ dyn.organs.params.Qm = 13.7 ;
 dyn.organs.params.Vli = 22.7 ;
 dyn.organs.params.Vlu = 4.7 ;
 dyn.organs.params.Vm = 48 ;
-dyn.organs.params.Km_p_450 = 38 ;
-dyn.organs.params.Vmax_p_450 = 1.4 ;
+dyn.organs.params.Km_p_450lu = 9 ;
+dyn.organs.params.Km_p_450li = 115 ;
+dyn.organs.params.Vmax_p_450lu = 0.85 ;
+dyn.organs.params.Vmax_p_450li = 1.4 ;
 dyn.organs.params.Mli = 28 ;
 dyn.organs.params.Mlu = 5.0 ;
 dyn.organs.params.kinj = 35 ;

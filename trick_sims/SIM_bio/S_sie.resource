@@ -1624,12 +1624,18 @@ set trick_templates(params_T.Vlu) \
 {lung V param	double	InputOnly	--	other	0	Vm}
 
 set trick_templates(params_T.Vm) \
-{tissue V param	double	InputOnly	--	other	0	Km_p_450}
+{tissue V param	double	InputOnly	--	other	0	Km_p_450lu}
 
-set trick_templates(params_T.Km_p_450) \
-{Km param	double	InputOnly	--	other	0	Vmax_p_450}
+set trick_templates(params_T.Km_p_450lu) \
+{Km param	double	InputOnly	--	other	0	Km_p_450li}
 
-set trick_templates(params_T.Vmax_p_450) \
+set trick_templates(params_T.Km_p_450li) \
+{Km param	double	InputOnly	--	other	0	Vmax_p_450lu}
+
+set trick_templates(params_T.Vmax_p_450lu) \
+{Vmax p-450 param	double	InputOnly	--	other	0	Vmax_p_450li}
+
+set trick_templates(params_T.Vmax_p_450li) \
 {Vmax p-450 param	double	InputOnly	--	other	0	Mli}
 
 set trick_templates(params_T.Mli) \

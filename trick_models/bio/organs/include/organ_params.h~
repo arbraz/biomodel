@@ -18,9 +18,11 @@ typedef struct {
         double Vli;        /* *i -- liver V param */
         double Vlu;        /* *i -- lung V param */
         double Vm;         /* *i -- tissue V param */
-	double Km_p_450;   /* *i -- Km param */
-	double Vmax_p_450; /* *i -- Vmax p-450 param */
-	double Mli;          /* *i -- Mli param */
+	double Km_p_450lu;   /* *i -- Km param */
+	double Km_p_450li;   /* *i -- Km param */
+	double Vmax_p_450lu; /* *i -- Vmax p-450 param */
+	double Vmax_p_450li; /* *i -- Vmax p-450 param */
+	double Mli;        /* *i -- Mli param */
 	double Mlu;	   /* *i -- Mlu param */  
 	double kinj;
 

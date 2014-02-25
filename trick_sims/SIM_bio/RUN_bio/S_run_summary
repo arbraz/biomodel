@@ -4,7 +4,7 @@ General:
 
 Executable called = /home/Alex1/trick_sims/SIM_bio/S_main_Linux_4.1_25.exe
 Input file = RUN_bio/input
-S_main build time = Thu Feb 13 10:07:52 2014
+S_main build time = Tue Feb 25 15:40:29 2014
 Trick version = 07.23.1-1
 
 ===============================================================================
@@ -13,7 +13,7 @@ Build time Environment:
 TRICK_CATALOG_HOME = /home/Alex1/trick_catalog
 TRICK_CAT_MGR_HOME = /home/Alex1/Downloads/07.23.1/catalog
 TRICK_CC = cc
-TRICK_CFLAGS =  -I/home/Alex1/trick_models -I/home/Alex1/trick_models
+TRICK_CFLAGS =  -I/home/Alex1/trick_models
 TRICK_CPPC = c++
 TRICK_DEBUG = 0
 TRICK_EDITOR = vi

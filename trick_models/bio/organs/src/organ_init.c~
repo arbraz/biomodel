@@ -21,7 +21,8 @@ int organ_init(
   O->params.Vm = O->params.Vm ;
   O->params.Km_p_450 = O->params.Km_p_450 ;
   O->params.Vmax_p_450 = O->params.Vmax_p_450 ;
-  O->params.M = O->params.M ;
+  O->params.Mli = O->params.Mli ;
+  O->params.Mlu = O->params.Mlu ;
   O->params.kinj = O->params.kinj ;
 
   return 0 ; 

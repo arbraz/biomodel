@@ -1,7 +1,7 @@
 
-/* $Id: S_source.c auto 2014/02/13 10:18:55 Alex1 */
-char *version_date_tag = "@(#)CP Version 07.23.1-1, Thu Feb 13 10:18:55 2014" ;
-char *build_date = "Thu Feb 13 10:18:55 2014" ;
+/* $Id: S_source.c auto 2014/02/25 15:40:29 Alex1 */
+char *version_date_tag = "@(#)CP Version 07.23.1-1, Tue Feb 25 15:40:29 2014" ;
+char *build_date = "Tue Feb 25 15:40:29 2014" ;
 char *current_version = "07.23.1-1" ;
 /* Headers that are always included for each sim */
 

@@ -1,6 +1,6 @@
-| |dr1hgh1.bmen.tamu.edu|1|30.00|2014/02/13,10:52:25| [31mSent results for run_num = 279[00m
+| |dr1hgh1.bmen.tamu.edu|1|30.00|2014/02/18,15:03:26| [31mSent results for run_num = 279[00m
 
-| |dr1hgh1.bmen.tamu.edu|1|30.00|2014/02/13,10:52:25| 
+| |dr1hgh1.bmen.tamu.edu|1|30.00|2014/02/18,15:03:26| 
 SIMULATION TERMINATED IN
   PROCESS: 1
   JOB/ROUTINE: 2/sim_services/mains/master.c
@@ -12,11 +12,11 @@ LAST JOB CALLED: sys.var_server_sync(&sys.exec)
        SIMULATION START TIME:        0.000
         SIMULATION STOP TIME:       30.000
      SIMULATION ELAPSED TIME:       30.000
-         ACTUAL ELAPSED TIME:        0.013
+         ACTUAL ELAPSED TIME:        0.012
         ACTUAL CPU TIME USED:        0.010
-    SIMULATION / ACTUAL TIME:     2233.309
-       SIMULATION / CPU TIME:     3000.600
+    SIMULATION / ACTUAL TIME:     2519.152
+       SIMULATION / CPU TIME:     3000.300
   ACTUAL INITIALIZATION TIME:        0.000
-     INITIALIZATION CPU TIME:        0.000
+     INITIALIZATION CPU TIME:        0.001
 
 

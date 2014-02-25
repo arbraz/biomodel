@@ -97,11 +97,19 @@ ATTRIBUTES attrparams_T[] = {
   "tissue V param",
   2,TRICK_DOUBLE,sizeof(double),0,0,Language_C,0x0,
   0,(char*)0, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
-{ "Km_p_450", "double", "--", "", "",
+{ "Km_p_450lu", "double", "--", "", "",
   "Km param",
   2,TRICK_DOUBLE,sizeof(double),0,0,Language_C,0x0,
   0,(char*)0, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
-{ "Vmax_p_450", "double", "--", "", "",
+{ "Km_p_450li", "double", "--", "", "",
+  "Km param",
+  2,TRICK_DOUBLE,sizeof(double),0,0,Language_C,0x0,
+  0,(char*)0, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "Vmax_p_450lu", "double", "--", "", "",
+  "Vmax p-450 param",
+  2,TRICK_DOUBLE,sizeof(double),0,0,Language_C,0x0,
+  0,(char*)0, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "Vmax_p_450li", "double", "--", "", "",
   "Vmax p-450 param",
   2,TRICK_DOUBLE,sizeof(double),0,0,Language_C,0x0,
   0,(char*)0, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
@@ -143,8 +151,10 @@ void init_attrparams_T(void) {
         attrparams_T[i++].offset = offsetof(params_T,Vli) ;
         attrparams_T[i++].offset = offsetof(params_T,Vlu) ;
         attrparams_T[i++].offset = offsetof(params_T,Vm) ;
-        attrparams_T[i++].offset = offsetof(params_T,Km_p_450) ;
-        attrparams_T[i++].offset = offsetof(params_T,Vmax_p_450) ;
+        attrparams_T[i++].offset = offsetof(params_T,Km_p_450lu) ;
+        attrparams_T[i++].offset = offsetof(params_T,Km_p_450li) ;
+        attrparams_T[i++].offset = offsetof(params_T,Vmax_p_450lu) ;
+        attrparams_T[i++].offset = offsetof(params_T,Vmax_p_450li) ;
         attrparams_T[i++].offset = offsetof(params_T,Mli) ;
         attrparams_T[i++].offset = offsetof(params_T,Mlu) ;
         attrparams_T[i++].offset = offsetof(params_T,kinj) ;
