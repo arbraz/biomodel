@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="/home/engineer/Downloads/07.23.1/docs/trick_module.xsl"?>
+
+<!--Note:
+    Firefox 3 fails to process XSLT files if they are on the local hard drive
+    plus outside of the current XML file's path (or descendant paths). Users
+    may need to edit $HOME/.mozilla/firefox/*.default/prefs.js and add a new
+    URI setting in order to properly view this file in a firefox browser:
+    - user_pref("security.fileuri.strict_origin_policy", false);
+    OR
+    - type about:config in the address bar
+    - change security.fileuri.strict_origin_policy to false
+-->
+
+<file>
+    <file_name> cannon_init.c </file_name>
+    <full_path_file_name> /home/engineer/trick_models/cannon/gravity/src/cannon_init.c </full_path_file_name>
+    <trick_header>
+        <references>
+        </references>
+        <assumptions>
+        </assumptions>
+        <requirements>
+        </requirements>
+        <library_dependencies>
+        </library_dependencies>
+        <purpose> Initialize cannonball </purpose>
+        <class></class>
+        <modifications>
+        </modifications>
+    </trick_header>
+
+    <jobs>
+        <job>
+            <job_name> cannon_init </job_name>
+            <return_type> int  </return_type>
+            <units> -- </units>
+            <comment> Always return zero  </comment>
+            <argument_list>
+                <arg>
+                    <arg_name> C </arg_name>
+                    <type> CANNON </type>
+                    <dims> *  </dims>
+                    <inout> Inout </inout>
+                    <units> -- </units>
+                    <comment> Cannonball structure  </comment>
+                </arg>
+            </argument_list>
+        </job>
+    </jobs>
+    <includes>
+        <file>#include &lt;stdio.h&gt;</file>
+        <file>#include &lt;math.h&gt;</file>
+        <file>#include &quot;../include/cannon.h&quot;</file>
+    </includes>
+</file>

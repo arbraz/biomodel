@@ -4,11 +4,11 @@ Machine work unit breakdown:
 ----------------------------------------------------------------------
                   machine   units  (units %) cpu_time (s) cpu/unit (s)
 ----------------------------------------------------------------------
-  1. dr1hgh1.bmen.tamu.edu      20  (100.00%)         0.30         0.02
+  1. dr1hgh1.bmen.tamu.edu      20  (100.00%)         0.31         0.02
 
-Total monte carlo time taken : 0.44 
+Total monte carlo time taken : 0.45 
 Actual average time per unit ( sum of CPU time / number of runs ) : 0.02 
 Effective average time per unit ( total time / number of runs ) : 0.02 
-Speedup ( sum of CPU time / total time ) : 0.70 
-Efficency ( Speedup / num slaves ) : 69.54% 
+Speedup ( sum of CPU time / total time ) : 0.69 
+Efficency ( Speedup / num slaves ) : 69.09% 
 

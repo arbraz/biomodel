@@ -1,0 +1,14 @@
+
+Monte Carlo execution reached termination running 4 out of 4 runs (0 errors).
+Machine work unit breakdown:
+----------------------------------------------------------------------
+                  machine   units  (units %) cpu_time (s) cpu/unit (s)
+----------------------------------------------------------------------
+  1.            localhost       4  (100.00%)         0.03         0.01
+
+Total monte carlo time taken : 0.14 
+Actual average time per unit ( sum of CPU time / number of runs ) : 0.01 
+Effective average time per unit ( total time / number of runs ) : 0.04 
+Speedup ( sum of CPU time / total time ) : 0.18 
+Efficency ( Speedup / num slaves ) : 18.16% 
+

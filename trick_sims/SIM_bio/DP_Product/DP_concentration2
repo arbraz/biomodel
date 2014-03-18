@@ -1,0 +1,56 @@
+No title specified
+
+PLOTS:
+
+PAGE 1: "Concentration"
+        LEGEND: "No"
+
+    PLOT 1: "Liver"
+        Y_AXIS_FORMAT: "%g"
+        X_MIN_RANGE: 0
+        Y_AXIS_LABEL: "Concentration (mM)"
+        X_AXIS_LABEL: "Time"
+
+        X_variable: "sys.exec.out.time"
+            TIME_NAME: "sys.exec.out.time"
+            UNITS: "s"
+            MIN_RANGE: 0
+            LABEL: "sys.exec.out.time"
+
+        Y_variable: "dyn.organs.Cli"
+            UNITS: "--"
+            LABEL: "Cli"
+            TIME_NAME: "sys.exec.out.time"
+
+    PLOT 2: "Lung"
+        Y_AXIS_FORMAT: "%g"
+        X_MIN_RANGE: 0
+        Y_AXIS_LABEL: "Concetration (mM)"
+        X_AXIS_LABEL: "Time"
+
+        X_variable: "sys.exec.out.time"
+            UNITS: "s"
+            TIME_NAME: "sys.exec.out.time"
+            LABEL: "sys.exec.out.time"
+
+        Y_variable: "dyn.organs.Clu"
+            UNITS: "--"
+            LABEL: "Clu"
+            TIME_NAME: "sys.exec.out.time"
+
+    PLOT 3: "Medium"
+        Y_AXIS_FORMAT: "%g"
+        X_MIN_RANGE: 0
+        Y_AXIS_LABEL: "Concentration (mM)"
+        X_AXIS_LABEL: "Time"
+
+        X_variable: "sys.exec.out.time"
+            TIME_NAME: "sys.exec.out.time"
+            UNITS: "s"
+            MIN_RANGE: 0
+            LABEL: "sys.exec.out.time"
+
+        Y_variable: "dyn.organs.Cm"
+            UNITS: "--"
+            LABEL: "Cm"
+            TIME_NAME: "sys.exec.out.time"

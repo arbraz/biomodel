@@ -1,0 +1,61 @@
+Output for /home/engineer/Downloads/07.23.1/bin/CP version 07.23.1-1 at Wed Dec  4 15:37:16 2013
+
+Parsing S_define...
+
+Reading the catalog. Could take a while ... Done
+
+Processing sim_object sys
+Looking for structure EXECUTIVE... (found Trick libs)
+Looking for module input_processor...(found directory catalog)
+
+Processing sim_object dyn
+Looking for structure CANNON... (found cache)
+Looking for module cannon_init...(found cache)
+Looking for module cannon_analytic...(found cache)
+
+Completed parsing S_define
+
+Determining structure dependencies.
+Determining module dependencies.
+MIS-ing all src files... 
+   Processing /home/engineer/trick_models/cannon/gravity/src/cannon_init.c
+      Processing cannon_init
+      Processed (job_class = N/A) int  cannon_init(CANNON*)
+   Processing /home/engineer/trick_models/cannon/gravity/src/cannon_analytic.c
+      Processing cannon_analytic
+      Processed (job_class = N/A) int  cannon_analytic(CANNON*)
+
+MIS complete
+
+Removing existing Makefile...  Complete
+Creating New Makefile...  Complete
+Creating S_source.c... Complete
+Creating Default_data... Complete
+Creating S_document.xml... Complete
+Adding makedepend dependencies [1 dir(s)]
+   1. Adding dependencies for src files in /home/engineer/trick_models/cannon/gravity
+   2. Adding dependencies for S_source.c
+
+Appended dependencies to Makefile
+ln -f -s /home/engineer/trick_models/cannon/gravity/object_Linux_4.1_25/cannon_analytic.o lib_Linux_4.1_25/o0.o
+ln -f -s /home/engineer/trick_models/cannon/gravity/object_Linux_4.1_25/cannon_init.o lib_Linux_4.1_25/o1.o
+ln -f -s /home/engineer/trick_models/cannon/gravity/object_Linux_4.1_25/io_cannon.o lib_Linux_4.1_25/i0.o
+cc   -I/home/engineer/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/engineer/Downloads/07.23.1/trick_source -I../include  -c S_source.c -o lib_Linux_4.1_25/S_source.o
+In file included from S_source.c:59:
+/home/engineer/trick_models/cannon/gravity/include/cannon.h:21:7: warning: no newline at end of file
+Verifying sim checksums...
+cc   -I/home/engineer/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/engineer/Downloads/07.23.1/trick_source -I../include  -c S_checksums.c -o lib_Linux_4.1_25/S_checksums.o
+ar crs lib_Linux_4.1_25/lib_sim_objs.a lib_Linux_4.1_25/*.o
+cc  -I/home/engineer/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/engineer/Downloads/07.23.1/trick_source -I../include -o S_main_Linux_4.1_25.exe \
+		/home/engineer/Downloads/07.23.1/lib_Linux_4.1_25/master.o\
+		/home/engineer/Downloads/07.23.1/lib_Linux_4.1_25/libtrick.a\
+		lib_Linux_4.1_25/lib_sim_objs.a\
+		  \
+		  \
+		/home/engineer/Downloads/07.23.1/lib_Linux_4.1_25/libtrick.a -lm -lrt
+Generating S_sie.resource...
+./S_main_Linux_4.1_25.exe sie
+
+Created S_sie.resource file.
+
+=== Simulation make complete ===

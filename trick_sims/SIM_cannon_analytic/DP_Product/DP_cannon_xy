@@ -1,0 +1,20 @@
+No title specified
+
+PLOTS:
+
+PAGE 1: "Page"
+
+    PLOT 1: "Plot"
+        Y_AXIS_FORMAT: "%g"
+
+        X_variable: "dyn.cannon.pos[0]"
+            UNITS: "m"
+            TIME_NAME: "dyn.cannon.pos[0]"
+            LABEL: "dyn.cannon.pos[0]"
+
+        Y_variable: "dyn.cannon.pos[1]"
+            UNITS: "m"
+            SYMBOL_STYLE: "Circle"
+            SYMBOL_SIZE: "Tiny"
+            LABEL: "dyn.cannon.pos[1]"
+            TIME_NAME: "dyn.cannon.pos[0]"

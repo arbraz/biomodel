@@ -1,4 +1,4 @@
-Output for /home/Alex1/Downloads/07.23.1/bin/CP version 07.23.1-1 at Tue Feb 25 15:40:28 2014
+Output for /home/Alex1/Downloads/07.23.1/bin/CP version 07.23.1-1 at Tue Mar 18 14:50:32 2014
 
 Parsing S_define...
 
@@ -13,14 +13,13 @@ Processing sim_object dyn
 Looking for structure ORGANS... (found cache)
 Looking for structure INTEGRATOR... (found Trick libs)
 Looking for module organ_init...(found cache)
-Looking for module concentration_deriv...(found new/updated)
+Looking for module concentration_deriv...(found cache)
 Looking for module organ_integ...(found cache)
 
 Completed parsing S_define
 
 Determining structure dependencies.
 Determining module dependencies.
-Getting dependencies for /home/Alex1/trick_models/bio/organs/src/concentration_deriv.c
 MIS-ing all src files... 
    Processing /home/Alex1/trick_models/bio/organs/src/organ_init.c
       Processing organ_init
@@ -44,7 +43,11 @@ Adding makedepend dependencies [1 dir(s)]
    2. Adding dependencies for S_source.c
 
 Appended dependencies to Makefile
-cd /home/Alex1/trick_models/bio/organs/src/ ; cc   -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include  -c concentration_deriv.c -o /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/concentration_deriv.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/concentration_deriv.o lib_Linux_4.1_25/o0.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_init.o lib_Linux_4.1_25/o1.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_integ.o lib_Linux_4.1_25/o2.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organ_params.o lib_Linux_4.1_25/i0.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organs.o lib_Linux_4.1_25/i1.o
 cc   -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include  -c S_source.c -o lib_Linux_4.1_25/S_source.o
 Verifying sim checksums...
 cc   -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include  -c S_checksums.c -o lib_Linux_4.1_25/S_checksums.o

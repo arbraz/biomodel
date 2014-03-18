@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="/home/BMEN/kmccadden/trick/docs/trick_struct.xsl"?>
+
+<!--Note:
+    Firefox 3 fails to process XSLT files if they are on the local hard drive
+    plus outside of the current XML file's path (or descendant paths). Users
+    may need to edit $HOME/.mozilla/firefox/*.default/prefs.js and add a new
+    URI setting in order to properly view this file in a firefox browser:
+    - user_pref("security.fileuri.strict_origin_policy", false);
+    OR
+    - type about:config in the address bar
+    - change security.fileuri.strict_origin_policy to false
+-->
+
+<file>
+    <file_name> cannon.h </file_name>
+    <full_path_file_name> /home/BMEN/kmccadden/trick_models/cannon/gravity/include/cannon.h </full_path_file_name>
+    <trick_header>
+        <references>
+        </references>
+        <assumptions>
+        </assumptions>
+        <requirements>
+        </requirements>
+        <library_dependencies>
+        </library_dependencies>
+        <purpose> My first cannon test </purpose>
+        <class></class>
+        <modifications>
+        </modifications>
+    </trick_header>
+
+    <enumerations>
+    </enumerations>
+
+    <structures>
+        <struct>
+            <struct_name>CANNON</struct_name>
+            <member>
+                <pname>pos0</pname>
+                <type>double</type>
+                <dims>[2]</dims>
+                <units>m</units>
+                <comment>Init position of cannonball</comment>
+            </member>
+            <member>
+                <pname>vel0</pname>
+                <type>double</type>
+                <dims>[2]</dims>
+                <units>m/s</units>
+                <comment>Init velocity of cannonball</comment>
+            </member>
+            <member>
+                <pname>acc0</pname>
+                <type>double</type>
+                <dims>[2]</dims>
+                <units>m/s2</units>
+                <comment>Init acceleration of cannonball</comment>
+            </member>
+            <member>
+                <pname>pos</pname>
+                <type>double</type>
+                <dims>[2]</dims>
+                <units>m</units>
+                <comment>xy-position</comment>
+            </member>
+            <member>
+                <pname>vel</pname>
+                <type>double</type>
+                <dims>[2]</dims>
+                <units>m/s</units>
+                <comment>xy-velocity</comment>
+            </member>
+            <member>
+                <pname>acc</pname>
+                <type>double</type>
+                <dims>[2]</dims>
+                <units>m/s2</units>
+                <comment>xy-acceleration</comment>
+            </member>
+            <member>
+                <pname>init_speed</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>m/s</units>
+                <comment>Init barrel speed</comment>
+            </member>
+            <member>
+                <pname>init_angle</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>r</units>
+                <comment>Angle of cannon</comment>
+            </member>
+        </struct>
+
+    </structures>
+
+</file>

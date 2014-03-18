@@ -1,0 +1,20 @@
+sim_object
+{ 
+
+	sim_services/include: EXECUTIVE exec (sim_services/include/executive.d) ;
+
+	(automatic) sim_services/input_processor: 
+			input_processor( INPUT_PROCESSOR* IP = &sys.exec.ip ) ;
+} sys ;
+
+sim_object
+{ 
+
+	cannon/gravity: CANNON cannon (cannon/gravity/include/cannon.d) ;
+
+	(initialization) cannon/gravity: 
+			cannon_init( CANNON* C = &dyn.cannon) ;
+
+	(0.01, scheduled) cannon/gravity:
+			cannon_analytic( CANNON* C = &dyn.cannon) ;
+} dyn ;

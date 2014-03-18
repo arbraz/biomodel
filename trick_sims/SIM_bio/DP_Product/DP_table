@@ -1,0 +1,21 @@
+No title specified
+
+TABLES:
+
+    TABLE 1: ""
+
+        VARIABLE: "sys.exec.out.time"
+            UNITS: "s"
+            LABEL: "time"
+
+        VARIABLE: "dyn.organs.Cli"
+            UNITS: "--"
+            LABEL: "Cli"
+
+        VARIABLE: "dyn.organs.Clu"
+            UNITS: "--"
+            LABEL: "Clu"
+
+        VARIABLE: "dyn.organs.Cm"
+            UNITS: "--"
+            LABEL: "Cm"
