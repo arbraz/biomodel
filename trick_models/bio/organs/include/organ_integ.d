@@ -15,7 +15,7 @@ for (int kk = 0 ; kk < 8 ; kk++ ) {
     INTEGRATOR.stored_data[kk] = alloc(NUM_VARIABLES) ;
 }
 
-INTEGRATOR.option = Runge_Kutta_2 ;
+INTEGRATOR.option = Runge_Kutta_4 ;
 INTEGRATOR.init = True ;
 INTEGRATOR.first_step_deriv = Yes ;
 INTEGRATOR.num_state = NUM_VARIABLES ;

@@ -19,7 +19,7 @@ int concentration_deriv(
 	A = Clu/O->params.Plu - Cli/O->params.Pli;
 	A = O->params.Qli / O->params.Vli *A;
 	
-	B = (O->params.Vmax_p_450li * Cli)/(O->params.Km_p_450li + Cli) * O->params.Mli * O->params.Pli;
+	B = (O->params.Vmax_p_450li * Cli)/(O->params.Km_p_450li + Cli) * O->params.Mli;
 
 	/* change in liver concentration for this time step */
 	O->dC_liver_dt = A - B;
@@ -29,7 +29,7 @@ int concentration_deriv(
 	C = O->params.Qm * Cm + O->params.Qli*Cli/O->params.Pli - O->params.Qlu*Clu/O->params.Plu;
 	C = C / O->params.Vlu;
 
-	D = (O->params.Vmax_p_450lu * Clu)/(O->params.Km_p_450lu + Clu) * O->params.Mlu * O->params.Plu;
+	D = (O->params.Vmax_p_450lu * Clu)/(O->params.Km_p_450lu + Clu) * O->params.Mlu;
 
 	/* change in lung concentration for this time step */
 	O->dC_lung_dt = C - D;
@@ -49,7 +49,7 @@ int concentration_deriv(
          * Note that the 0.01 matches the frequency of this job
          * as specified in the S_define.
          */
-         time += 0.01 ;
+         time += 1 ;
 
 	 
 

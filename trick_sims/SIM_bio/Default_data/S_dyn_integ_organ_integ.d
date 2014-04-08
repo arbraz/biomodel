@@ -8,7 +8,7 @@
  */
 
 
-/* $Id: S_source.c auto 2014/03/18 14:50:33 Alex1 */
+/* $Id: S_source.c auto 2014/04/08 14:29:47 Alex1 */
 
 #define NUM_STEP 12
 #define NUM_VARIABLES 4
@@ -27,7 +27,7 @@ for (int kk = 0 ; kk < 8 ; kk++ ) {
     dyn.integ.stored_data[kk] = alloc(NUM_VARIABLES) ;
 }
 
-dyn.integ.option = Runge_Kutta_2 ;
+dyn.integ.option = Runge_Kutta_4 ;
 dyn.integ.init = True ;
 dyn.integ.first_step_deriv = Yes ;
 dyn.integ.num_state = NUM_VARIABLES ;

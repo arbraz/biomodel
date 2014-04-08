@@ -1,0 +1,19 @@
+NUM_RUNS:1000
+
+#master_seed = 1000.0;
+
+VARS:
+dyn.organs.params.Mlu {--} gaussian(seed=10001, sigma = 0.25, mu = 5); 
+dyn.organs.params.Mli {--} gaussian(seed=10002, sigma = 1.4, mu = 28);
+dyn.organs.params.Vlu {--} gaussian(seed=10003, sigma = 0.047, mu = 4.7);
+#dyn.organs.params.Vli {--} gaussian(seed=10004, sigma = 0.227, mu = 22.7);
+dyn.organs.params.Vm {--} gaussian(seed=10005, sigma = 0.48, mu = 48);
+dyn.organs.params.Plu {--} gaussian(seed=10006, sigma = 0.0155,mu = 1.55);
+dyn.organs.params.Pli {--} gaussian(seed=10007, sigma = 0.0496,mu = 4.96);
+dyn.organs.params.Vmax_p_450lu {--} gaussian(seed=10008, sigma =.0265625, mu =.85,rel_min = -.10625,rel_max = .10625);
+dyn.organs.params.Vmax_p_450li {--} gaussian(seed=10009, sigma = .04375, mu = 1.4,rel_min = -.175,rel_max = .175);
+dyn.organs.params.Km_p_450lu {--} gaussian(seed=20000, sigma = .5625, mu = 9,rel_min = -2.25,rel_max = 2.25);
+dyn.organs.params.Km_p_450li {--} gaussian(seed=20001, sigma = 7.1875, mu = 115,rel_min = -28.75,rel_max = 28.75);
+
+DATA:
+

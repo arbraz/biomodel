@@ -1,14 +1,16 @@
 # set number of monte carlo runs to perform
 NUM_RUNS: 4
 
+master_seed = 1000;
+
 # now tell which variables to...well...vary
 VARS:
 
-dyn.organs.Cli gaussian(seed=1001, sigma=1.0, mu=2.0);
-# or if uniform dyn.organs.Cli uniform(seed=1001, min=-1.0, max=1.0);
-dyn.organs.Clu        gaussian(seed=1002, sigma=1.0, mu=2.0); 
-dyn.organs.Cm         gaussian(seed=1003, sigma=1.0, mu=2.0);
-dyn.organs.params.Pli gaussian(seed=1004, sigma=1.0, mu=2.0);
+dyn.organs.Cli gaussian(seed=master_seed+1, sigma=1.0, mu=2.0);
+# or if uniform dyn.organs.Cli uniform(seed=master_seed+1, min=-1.0, max=1.0);
+dyn.organs.Clu        gaussian(seed=master_seed+2, sigma=1.0, mu=2.0); 
+dyn.organs.Cm         gaussian(seed=master_seed+, sigma=1.0, mu=2.0);
+dyn.organs.params.Pli gaussian(seed=master_seed+4, sigma=1.0, mu=2.0);
 dyn.organs.params.Plu gaussian(seed=1005, sigma=1.0, mu=2.0);
 dyn.organs.params.Qli gaussian(seed=1006, sigma=1.0, mu=2.0);
 dyn.organs.params.Qlu gaussian(seed=1007, sigma=1.0, mu=2.0);

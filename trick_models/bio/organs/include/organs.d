@@ -1,6 +1,6 @@
 ORGANS.Cli = 0.0 ;
 ORGANS.Clu = 0.0 ;
-ORGANS.Cm = 0.0 ;
+ORGANS.Cm = 35.0 ;
 ORGANS.params.Pli = 4.96 ;
 ORGANS.params.Plu = 1.55 ;
 ORGANS.params.Qli = 4.6 ;
@@ -15,5 +15,5 @@ ORGANS.params.Vmax_p_450lu = 0.85 ;
 ORGANS.params.Vmax_p_450li = 1.4 ;
 ORGANS.params.Mli = 28 ;
 ORGANS.params.Mlu = 5.0 ;
-ORGANS.params.kinj = 35.0 ;
+ORGANS.params.kinj = 0.0 ;
 

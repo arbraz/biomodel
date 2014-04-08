@@ -2,27 +2,7 @@ No title specified
 
 PLOTS:
 
-PAGE 1: "Liver"
-        LEGEND: "No"
-
-    PLOT 1: "Concentration"
-        Y_AXIS_FORMAT: "%g"
-        X_MIN_RANGE: 0
-        Y_AXIS_LABEL: "Concentration (mM)"
-        X_AXIS_LABEL: "Time"
-
-        X_variable: "sys.exec.out.time"
-            TIME_NAME: "sys.exec.out.time"
-            UNITS: "s"
-            MIN_RANGE: 0
-            LABEL: "sys.exec.out.time"
-
-        Y_variable: "dyn.organs.Cli"
-            UNITS: "--"
-            LABEL: "Cli"
-            TIME_NAME: "sys.exec.out.time"
-
-PAGE 2: "Lung"
+PAGE 1: "Lung"
         LEGEND: "No"
 
     PLOT 1: "Concentration"
@@ -39,24 +19,4 @@ PAGE 2: "Lung"
         Y_variable: "dyn.organs.Clu"
             UNITS: "--"
             LABEL: "Clu"
-            TIME_NAME: "sys.exec.out.time"
-
-PAGE 3: "Medium"
-        LEGEND: "No"
-
-    PLOT 1: "Concentration"
-        Y_AXIS_FORMAT: "%g"
-        X_MIN_RANGE: 0
-        Y_AXIS_LABEL: "Concentration (mM)"
-        X_AXIS_LABEL: "Time"
-
-        X_variable: "sys.exec.out.time"
-            TIME_NAME: "sys.exec.out.time"
-            UNITS: "s"
-            MIN_RANGE: 0
-            LABEL: "sys.exec.out.time"
-
-        Y_variable: "dyn.organs.Cm"
-            UNITS: "--"
-            LABEL: "Cm"
             TIME_NAME: "sys.exec.out.time"

@@ -17,7 +17,7 @@ dyn.organs.params.Vli gaussian(seed=1009, sigma=1.0, mu=2.0);
 dyn.organs.params.Vlu gaussian(seed=1010, sigma=1.0, mu=2.0);
 dyn.organs.params.Vm  gaussian(seed=1011, sigma=1.0, mu=2.0);
 dyn.organs.params.Vmax_p_450lu gaussian(seed=1014, sigma=1.0, mu=2.0);
-dyn.organs.params.M    gaussian(seed=1015, sigma=1.0, mu=2.0);
+dyn.organs.params.Mli    gaussian(seed=1015, sigma=1.0, mu=2.0);
 dyn.organs.params.kinj gaussian(seed=1016, sigma=1.0, mu=2.0);
 
 
