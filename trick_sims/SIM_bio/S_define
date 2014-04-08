@@ -1,3 +1,7 @@
+#define INTEG_RATE   0.1  // (s) time step size for system numerical integration
+#define SENSOR_RATE  1.0  // (s) time step size for sensor calls
+#define CONTROL_RATE 1.0 //  (s) time step size for controller calls
+
 sim_object
 {
         sim_services/include: 
@@ -29,5 +33,34 @@ sim_object
                       INTEGRATOR* I = &dyn.integ,
                       ORGANS* O = &dyn.organs ) ;
 }dyn;
+ 
+sim_object
+{
+        bio/sensors: CONCENTRATION_SENSOR concentration_sensor (bio/sensors/include/concentration_sensor.d) ;
+
+        (initialization) bio/sensors:
+             concentration_sensor_init(CONCENTRATION_SENSOR * CS = &sensor.concentration_sensor ) ;
+
+        (SENSOR_RATE, sensor) bio/sensors:
+             concentration_sensor_update(CONCENTRATION_SENSOR * CS = &sensor.concentration_sensor, ORGANS* O = &dyn.organs ) ;
+
+
+}sensor;
+
+sim_object
+{
+        bio/control: CONCENTRATION_CONTROL concentration_control (bio/control/include/concentration_control.d) ;
+
+        (initialization) bio/control:
+             concentration_control_init(CONCENTRATION_CONTROL * CC = &control.concentration_control ) ;
+
+        (CONTROL_RATE, effector) bio/control:
+             concentration_control(CONCENTRATION_CONTROL*  = &control.concentration_control, 
+                                   ORGANS* O               = &dyn.organs,
+                                   CONCENTRATION_SENSOR*   = &sensor.concentration_sensor)  ;
+
+}control;
+
+
 integrate (0.01) dyn;
 

@@ -1,7 +1,7 @@
 
-/* $Id: S_source.c auto 2014/04/08 14:29:47 Alex1 */
-char *version_date_tag = "@(#)CP Version 07.23.1-1, Tue Apr  8 14:29:47 2014" ;
-char *build_date = "Tue Apr  8 14:29:47 2014" ;
+/* $Id: S_source.c auto 2014/04/08 16:43:02 Alex1 */
+char *version_date_tag = "@(#)CP Version 07.23.1-1, Tue Apr  8 16:43:02 2014" ;
+char *build_date = "Tue Apr  8 16:43:02 2014" ;
 char *current_version = "07.23.1-1" ;
 /* Headers that are always included for each sim */
 
@@ -56,7 +56,9 @@ extern "C" {
 extern "C" {
 #endif
 
+#include "bio/control/include/concentration_control.h"
 #include "bio/organs/include/organs.h"
+#include "bio/sensors/include/concentration_sensor.h"
 #include "sim_services/include/executive.h"
 #include "sim_services/include/integrator.h"
 
@@ -91,10 +93,18 @@ extern "C" {
 extern "C" {
 #endif
 
+/* sim_object control */
+int     concentration_control(CONCENTRATION_CONTROL*,ORGANS*,CONCENTRATION_SENSOR*) ; 
+int     concentration_control_init(CONCENTRATION_CONTROL*) ; 
+
 /* sim_object dyn */
 int     concentration_deriv(ORGANS*) ; 
 int     organ_init(ORGANS*) ; 
 int     organ_integ(INTEGRATOR*,ORGANS*) ; 
+
+/* sim_object sensor */
+int     concentration_sensor_init(CONCENTRATION_SENSOR*) ; 
+int     concentration_sensor_update(CONCENTRATION_SENSOR*,ORGANS*) ; 
 
 #ifdef __cplusplus
 }
@@ -111,6 +121,8 @@ int     organ_integ(INTEGRATOR*,ORGANS*) ;
 #ifdef __cplusplus
 extern "C" {
 #endif
+void init_attrCONCENTRATION_CONTROL( void ) ; 
+void init_attrCONCENTRATION_SENSOR( void ) ; 
 void init_attrORGANS( void ) ; 
 void init_attrEXECUTIVE( void ) ;
 void init_attrJOBDATA( void ) ;
@@ -138,6 +150,8 @@ extern ATTRIBUTES attrATTRIBUTES[] ;
 extern ATTRIBUTES attrBC_INFO[] ;
 extern ATTRIBUTES attrCHILD_IPC[] ;
 extern ATTRIBUTES attrCOMMANDLINE_ARGS[] ;
+extern ATTRIBUTES attrCONCENTRATION_CONTROL[] ;
+extern ATTRIBUTES attrCONCENTRATION_SENSOR[] ;
 extern ATTRIBUTES attrDATA_RECORD[] ;
 extern ATTRIBUTES attrDR_GROUP[] ;
 extern ATTRIBUTES attrDR_INFO[] ;
@@ -284,6 +298,91 @@ ENUM_LIST enum_list[] = {
 } ;
 
 int num_enum_list = 33 ; 
+typedef struct td_control {
+        CONCENTRATION_CONTROL  concentration_control ;
+        JOBDATA job[2] ;
+} TD_control ;
+
+ATTRIBUTES attrstruct_td_control[] = {
+{ "concentration_control", "CONCENTRATION_CONTROL", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(CONCENTRATION_CONTROL),0,0,Language_C,0x0,
+  0,(char*)attrCONCENTRATION_CONTROL, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "job", "JOBDATA", "--", "", "",
+  "Job Scheduling Info",
+  3,TRICK_STRUCTURED,sizeof(JOBDATA),0,0,Language_C,0x0,
+  0,(char*)attrJOBDATA, 1,{{2,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "","","","","","",
+  0,0,0,0,0,Language_C,0,0,0,
+  0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } };
+
+ATTRIBUTES attrTD_control[] = {
+{ "concentration_control", "CONCENTRATION_CONTROL", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(CONCENTRATION_CONTROL),0,0,Language_C,0x0,
+  0,(char*)attrCONCENTRATION_CONTROL, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "job", "JOBDATA", "--", "", "",
+  "Job Scheduling Info",
+  3,TRICK_STRUCTURED,sizeof(JOBDATA),0,0,Language_C,0x0,
+  0,(char*)attrJOBDATA, 1,{{2,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "","","","","","",
+  0,0,0,0,0,Language_C,0,0,0,
+  0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } };
+
+void init_attrTD_control( void );
+void init_attrstruct_td_control( void );
+void init_attrstruct_td_control(void) {
+
+
+        EQUIV_ATTRIBUTES * equiv;
+        ATTRIBUTES* last_non_bf;
+        int i = 0;
+        static int initialized_1337 ;
+
+        if ( initialized_1337 ) {
+                return ;
+        }
+        initialized_1337 = 1 ;
+
+        last_non_bf = NULL ;
+        attrstruct_td_control[i++].offset = offsetof(struct td_control,concentration_control) ;
+        attrstruct_td_control[i++].offset = offsetof(struct td_control,job) ;
+
+        equiv = (EQUIV_ATTRIBUTES*) malloc(sizeof(EQUIV_ATTRIBUTES));
+        equiv->attr = attrstruct_td_control ;
+        equiv->base = attrstruct_td_control ;
+        avl_insert(equiv_attributes , (void *)equiv) ;
+
+        init_attrCONCENTRATION_CONTROL() ;
+        init_attrJOBDATA() ;
+}
+
+void init_attrTD_control(void) {
+
+
+        EQUIV_ATTRIBUTES * equiv;
+        ATTRIBUTES* last_non_bf;
+        int i = 0;
+        static int initialized_1337 ;
+
+        if ( initialized_1337 ) {
+                return ;
+        }
+        initialized_1337 = 1 ;
+
+        last_non_bf = NULL ;
+        attrTD_control[i++].offset = offsetof(TD_control,concentration_control) ;
+        attrTD_control[i++].offset = offsetof(TD_control,job) ;
+
+        equiv = (EQUIV_ATTRIBUTES*) malloc(sizeof(EQUIV_ATTRIBUTES));
+        equiv->attr = attrTD_control ;
+        equiv->base = attrstruct_td_control ;
+        avl_insert(equiv_attributes , (void *)equiv) ;
+
+        init_attrCONCENTRATION_CONTROL() ;
+        init_attrJOBDATA() ;
+}
+
 typedef struct td_dyn {
         ORGANS  organs ;
         INTEGRATOR  integ ;
@@ -382,6 +481,91 @@ void init_attrTD_dyn(void) {
         init_attrJOBDATA() ;
 }
 
+typedef struct td_sensor {
+        CONCENTRATION_SENSOR  concentration_sensor ;
+        JOBDATA job[2] ;
+} TD_sensor ;
+
+ATTRIBUTES attrstruct_td_sensor[] = {
+{ "concentration_sensor", "CONCENTRATION_SENSOR", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(CONCENTRATION_SENSOR),0,0,Language_C,0x0,
+  0,(char*)attrCONCENTRATION_SENSOR, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "job", "JOBDATA", "--", "", "",
+  "Job Scheduling Info",
+  3,TRICK_STRUCTURED,sizeof(JOBDATA),0,0,Language_C,0x0,
+  0,(char*)attrJOBDATA, 1,{{2,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "","","","","","",
+  0,0,0,0,0,Language_C,0,0,0,
+  0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } };
+
+ATTRIBUTES attrTD_sensor[] = {
+{ "concentration_sensor", "CONCENTRATION_SENSOR", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(CONCENTRATION_SENSOR),0,0,Language_C,0x0,
+  0,(char*)attrCONCENTRATION_SENSOR, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "job", "JOBDATA", "--", "", "",
+  "Job Scheduling Info",
+  3,TRICK_STRUCTURED,sizeof(JOBDATA),0,0,Language_C,0x0,
+  0,(char*)attrJOBDATA, 1,{{2,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "","","","","","",
+  0,0,0,0,0,Language_C,0,0,0,
+  0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } };
+
+void init_attrTD_sensor( void );
+void init_attrstruct_td_sensor( void );
+void init_attrstruct_td_sensor(void) {
+
+
+        EQUIV_ATTRIBUTES * equiv;
+        ATTRIBUTES* last_non_bf;
+        int i = 0;
+        static int initialized_1337 ;
+
+        if ( initialized_1337 ) {
+                return ;
+        }
+        initialized_1337 = 1 ;
+
+        last_non_bf = NULL ;
+        attrstruct_td_sensor[i++].offset = offsetof(struct td_sensor,concentration_sensor) ;
+        attrstruct_td_sensor[i++].offset = offsetof(struct td_sensor,job) ;
+
+        equiv = (EQUIV_ATTRIBUTES*) malloc(sizeof(EQUIV_ATTRIBUTES));
+        equiv->attr = attrstruct_td_sensor ;
+        equiv->base = attrstruct_td_sensor ;
+        avl_insert(equiv_attributes , (void *)equiv) ;
+
+        init_attrCONCENTRATION_SENSOR() ;
+        init_attrJOBDATA() ;
+}
+
+void init_attrTD_sensor(void) {
+
+
+        EQUIV_ATTRIBUTES * equiv;
+        ATTRIBUTES* last_non_bf;
+        int i = 0;
+        static int initialized_1337 ;
+
+        if ( initialized_1337 ) {
+                return ;
+        }
+        initialized_1337 = 1 ;
+
+        last_non_bf = NULL ;
+        attrTD_sensor[i++].offset = offsetof(TD_sensor,concentration_sensor) ;
+        attrTD_sensor[i++].offset = offsetof(TD_sensor,job) ;
+
+        equiv = (EQUIV_ATTRIBUTES*) malloc(sizeof(EQUIV_ATTRIBUTES));
+        equiv->attr = attrTD_sensor ;
+        equiv->base = attrstruct_td_sensor ;
+        avl_insert(equiv_attributes , (void *)equiv) ;
+
+        init_attrCONCENTRATION_SENSOR() ;
+        init_attrJOBDATA() ;
+}
+
 typedef struct td_sys {
         EXECUTIVE  exec ;
         JOBDATA job[3] ;
@@ -470,6 +654,8 @@ void init_attrTD_sys(void) {
 typedef struct td_sim {
     TD_sys sys ;
     TD_dyn dyn ;
+    TD_sensor sensor ;
+    TD_control control ;
 } SIM ; 
 ATTRIBUTES attrstruct_td_sim[] = {
 { "sys", "TD_sys", "--", "", "",
@@ -480,6 +666,14 @@ ATTRIBUTES attrstruct_td_sim[] = {
   "Declared in S_define",
   3,TRICK_STRUCTURED,sizeof(TD_dyn),0,0,Language_C,0x0,
   0,(char*)attrTD_dyn, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "sensor", "TD_sensor", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(TD_sensor),0,0,Language_C,0x0,
+  0,(char*)attrTD_sensor, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "control", "TD_control", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(TD_control),0,0,Language_C,0x0,
+  0,(char*)attrTD_control, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
 { "","","","","","",
   0,0,0,0,0,Language_C,0,0,0,
   0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } };
@@ -493,6 +687,14 @@ ATTRIBUTES attrSIM[] = {
   "Declared in S_define",
   3,TRICK_STRUCTURED,sizeof(TD_dyn),0,0,Language_C,0x0,
   0,(char*)attrTD_dyn, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "sensor", "TD_sensor", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(TD_sensor),0,0,Language_C,0x0,
+  0,(char*)attrTD_sensor, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
+{ "control", "TD_control", "--", "", "",
+  "Declared in S_define",
+  3,TRICK_STRUCTURED,sizeof(TD_control),0,0,Language_C,0x0,
+  0,(char*)attrTD_control, 0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } ,
 { "","","","","","",
   0,0,0,0,0,Language_C,0,0,0,
   0,{{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0},{0,0}} } };
@@ -515,6 +717,8 @@ void init_attrstruct_td_sim(void) {
         last_non_bf = NULL ;
         attrstruct_td_sim[i++].offset = offsetof(struct td_sim,sys) ;
         attrstruct_td_sim[i++].offset = offsetof(struct td_sim,dyn) ;
+        attrstruct_td_sim[i++].offset = offsetof(struct td_sim,sensor) ;
+        attrstruct_td_sim[i++].offset = offsetof(struct td_sim,control) ;
 
         equiv = (EQUIV_ATTRIBUTES*) malloc(sizeof(EQUIV_ATTRIBUTES));
         equiv->attr = attrstruct_td_sim ;
@@ -523,6 +727,8 @@ void init_attrstruct_td_sim(void) {
 
         init_attrTD_sys() ;
         init_attrTD_dyn() ;
+        init_attrTD_sensor() ;
+        init_attrTD_control() ;
 }
 
 void init_attrSIM(void) {
@@ -541,6 +747,8 @@ void init_attrSIM(void) {
         last_non_bf = NULL ;
         attrSIM[i++].offset = offsetof(SIM,sys) ;
         attrSIM[i++].offset = offsetof(SIM,dyn) ;
+        attrSIM[i++].offset = offsetof(SIM,sensor) ;
+        attrSIM[i++].offset = offsetof(SIM,control) ;
 
         equiv = (EQUIV_ATTRIBUTES*) malloc(sizeof(EQUIV_ATTRIBUTES));
         equiv->attr = attrSIM ;
@@ -549,6 +757,8 @@ void init_attrSIM(void) {
 
         init_attrTD_sys() ;
         init_attrTD_dyn() ;
+        init_attrTD_sensor() ;
+        init_attrTD_control() ;
 }
 
 
@@ -646,21 +856,23 @@ void * get_trick_copy_start_addr( void ) { return( (void *)trick_copy ); }
 void * get_trick_copy_end_addr( void )   { return( (void *)((char *)trick_copy + sizeof(SIM))); }
 void init_param( REF2 *R )             { R->attr = attrTRICK ; R->address = (char *)trick ; }
 int exec_get_input_job_select( void )    { return( 1 ) ; }
-int exec_get_var_sync_job_select( void ) { return( 2 ) ; }
+int exec_get_var_sync_job_select( void ) { return( 4 ) ; }
 
 #ifdef __cplusplus
 }
 #endif
 
-JOBDATA * exec_jobs[4] ; 
-JOBDATA * all_jobs[6] ; 
+JOBDATA * exec_jobs[6] ; 
+JOBDATA * all_jobs[10] ; 
 
 void exec_set_job_list( void ) {
 
         exec_jobs[0] = &(trick->sys.job[2]);
         exec_jobs[1] = &(trick->sys.job[0]);
-        exec_jobs[2] = &(trick->sys.job[1]);
-        exec_jobs[3] = (JOBDATA*)NULL ;
+        exec_jobs[2] = &(trick->sensor.job[1]);
+        exec_jobs[3] = &(trick->control.job[1]);
+        exec_jobs[4] = &(trick->sys.job[1]);
+        exec_jobs[5] = (JOBDATA*)NULL ;
 
 
         all_jobs[0] = &(trick->sys.job[2]);
@@ -669,6 +881,10 @@ void exec_set_job_list( void ) {
         all_jobs[3] = &(trick->dyn.job[0]);
         all_jobs[4] = &(trick->dyn.job[1]);
         all_jobs[5] = &(trick->dyn.job[2]);
+        all_jobs[6] = &(trick->sensor.job[0]);
+        all_jobs[7] = &(trick->sensor.job[1]);
+        all_jobs[8] = &(trick->control.job[0]);
+        all_jobs[9] = &(trick->control.job[1]);
         return ;
 }
 void init_attr( void ) {
@@ -713,6 +929,18 @@ void init_attr( void ) {
         nta->name = strdup("COMMANDLINE_ARGS") ;
         nta->attr = attrCOMMANDLINE_ARGS ;
         nta->size = sizeof(COMMANDLINE_ARGS) ;
+        avl_insert( structs_tree , (void *)nta ) ;
+
+        nta = (NAME_TO_ATTR *)malloc(sizeof(NAME_TO_ATTR)) ;
+        nta->name = strdup("CONCENTRATION_CONTROL") ;
+        nta->attr = attrCONCENTRATION_CONTROL ;
+        nta->size = sizeof(CONCENTRATION_CONTROL) ;
+        avl_insert( structs_tree , (void *)nta ) ;
+
+        nta = (NAME_TO_ATTR *)malloc(sizeof(NAME_TO_ATTR)) ;
+        nta->name = strdup("CONCENTRATION_SENSOR") ;
+        nta->attr = attrCONCENTRATION_SENSOR ;
+        nta->size = sizeof(CONCENTRATION_SENSOR) ;
         avl_insert( structs_tree , (void *)nta ) ;
 
         nta = (NAME_TO_ATTR *)malloc(sizeof(NAME_TO_ATTR)) ;
@@ -1228,6 +1456,14 @@ int ref_attributes( REF *R , int alloc_enable) {
                 R->address = (char*)&(trick->dyn) ;
                 error = io_attr( attrTD_dyn , R ) ;
         }
+        else if( ! strcmp( R->name[0] , "sensor" ) ) {
+                R->address = (char*)&(trick->sensor) ;
+                error = io_attr( attrTD_sensor , R ) ;
+        }
+        else if( ! strcmp( R->name[0] , "control" ) ) {
+                R->address = (char*)&(trick->control) ;
+                error = io_attr( attrTD_control , R ) ;
+        }
         return( error ) ;
 }
 
@@ -1250,6 +1486,14 @@ int ref_allocate( REF *R , int num ) {
         else if ( ! strcmp( R->name[0] , "dyn" ) ) {
                 R->address = (char*)&(trick->dyn) ;
                 error = io_alloc( attrTD_dyn , R , num , alloc_tree_by_address ) ;
+        }
+        else if ( ! strcmp( R->name[0] , "sensor" ) ) {
+                R->address = (char*)&(trick->sensor) ;
+                error = io_alloc( attrTD_sensor , R , num , alloc_tree_by_address ) ;
+        }
+        else if ( ! strcmp( R->name[0] , "control" ) ) {
+                R->address = (char*)&(trick->control) ;
+                error = io_alloc( attrTD_control , R , num , alloc_tree_by_address ) ;
         }
         return( error ) ;
 }
@@ -1274,6 +1518,14 @@ int ref_multiallocate( REF *R ) {
                 R->address = (char*)&(trick->dyn) ;
                 error = io_multialloc( attrTD_dyn , R , alloc_tree_by_address ) ;
         }
+        else if ( ! strcmp( R->name[0] , "sensor" ) ) {
+                R->address = (char*)&(trick->sensor) ;
+                error = io_multialloc( attrTD_sensor , R , alloc_tree_by_address ) ;
+        }
+        else if ( ! strcmp( R->name[0] , "control" ) ) {
+                R->address = (char*)&(trick->control) ;
+                error = io_multialloc( attrTD_control , R , alloc_tree_by_address ) ;
+        }
         return( error ) ;
 }
 
@@ -1284,6 +1536,12 @@ char * get_var_name( char * ptr , ATTRIBUTES ** attr ) {
         ALLOC_INFO al ;
         ALLOC_INFO * ret_node ;
 
+        if ( (long)ptr >= (long)&trick->control ) {
+                return (io_get_var_name( ptr , attrTD_control , (char*)&(trick->control), "control" , attr )) ;
+        }
+        if ( (long)ptr >= (long)&trick->sensor ) {
+                return (io_get_var_name( ptr , attrTD_sensor , (char*)&(trick->sensor), "sensor" , attr )) ;
+        }
         if ( (long)ptr >= (long)&trick->dyn ) {
                 return (io_get_var_name( ptr , attrTD_dyn , (char*)&(trick->dyn), "dyn" , attr )) ;
         }
@@ -1304,6 +1562,12 @@ char * get_var_name( char * ptr , ATTRIBUTES ** attr ) {
 
 int get_fixed_truncated_size( char * ptr , int dims , ATTRIBUTES * attr ) {
 
+        if ( (long)ptr >= (long)&trick->control ) {
+                return (io_get_fixed_truncated_size( ptr , attrTD_control , (char*)&(trick->control), dims , attr )) ;
+        }
+        if ( (long)ptr >= (long)&trick->sensor ) {
+                return (io_get_fixed_truncated_size( ptr , attrTD_sensor , (char*)&(trick->sensor), dims , attr )) ;
+        }
         if ( (long)ptr >= (long)&trick->dyn ) {
                 return (io_get_fixed_truncated_size( ptr , attrTD_dyn , (char*)&(trick->dyn), dims , attr )) ;
         }
@@ -1340,6 +1604,10 @@ void exec_writer( FILE *fp , VALUE_LIST *V ) {
                  (char*)&(trick->sys) , "sys", ptr_assigns, redo_assigns ) ;
                 io_write( fp , attrTD_dyn ,
                  (char*)&(trick->dyn) , "dyn", ptr_assigns, redo_assigns ) ;
+                io_write( fp , attrTD_sensor ,
+                 (char*)&(trick->sensor) , "sensor", ptr_assigns, redo_assigns ) ;
+                io_write( fp , attrTD_control ,
+                 (char*)&(trick->control) , "control", ptr_assigns, redo_assigns ) ;
         }
         else {
                 for ( ii = 0 ; ii < V->num_val ; ii++ ) {
@@ -1353,6 +1621,20 @@ void exec_writer( FILE *fp , VALUE_LIST *V ) {
                         if ( ! strcmp(V->v_data[ii].value.cp , "dyn" )) {
                                 io_write( fp , attrTD_dyn , 
                                  (char*)&(trick->dyn) , "dyn", ptr_assigns, redo_assigns ) ;
+                                break ;
+                        }
+                }
+                for ( ii = 0 ; ii < V->num_val ; ii++ ) {
+                        if ( ! strcmp(V->v_data[ii].value.cp , "sensor" )) {
+                                io_write( fp , attrTD_sensor , 
+                                 (char*)&(trick->sensor) , "sensor", ptr_assigns, redo_assigns ) ;
+                                break ;
+                        }
+                }
+                for ( ii = 0 ; ii < V->num_val ; ii++ ) {
+                        if ( ! strcmp(V->v_data[ii].value.cp , "control" )) {
+                                io_write( fp , attrTD_control , 
+                                 (char*)&(trick->control) , "control", ptr_assigns, redo_assigns ) ;
                                 break ;
                         }
                 }
@@ -1379,6 +1661,8 @@ void exec_clear( void ) {
         deleted_addresses->avl_compare = io_address_within;
         io_clear( attrTD_sys , (char*)&(trick->sys), "sys" , deleted_addresses) ;
         io_clear( attrTD_dyn , (char*)&(trick->dyn), "dyn" , deleted_addresses) ;
+        io_clear( attrTD_sensor , (char*)&(trick->sensor), "sensor" , deleted_addresses) ;
+        io_clear( attrTD_control , (char*)&(trick->control), "control" , deleted_addresses) ;
         iep = trick->sys.exec.ip.event;
         while (iep != NULL) {
                 int ii ;
@@ -1433,6 +1717,8 @@ void sie_resource( void ) {
 
         io_sie( sie_file , attrTD_sys , "sys" ) ;
         io_sie( sie_file , attrTD_dyn , "dyn" ) ;
+        io_sie( sie_file , attrTD_sensor , "sensor" ) ;
+        io_sie( sie_file , attrTD_control , "control" ) ;
         fclose( sie_file ) ;
 
         return ;
@@ -1521,6 +1807,32 @@ void exec_init_modules( EXECUTIVE * E , int id ) {
                         TRICK_DEBUG( organ_init() );
                         organ_init(&(trick->dyn.organs)) ;
                         MALF_AFTER(trick->dyn.job[0]);
+                        break;
+                case 1:
+                        if( trick->sensor.job[0].in.enabled == No ) {
+                                break ;
+                        }
+                        if ( EI->debugging == On ) {
+                                send_hs(stderr,"%.4f debugging pause before init_job concentration_sensor_init()\n" , EO->time ) ;
+                                pthread_cond_wait(&(EI->go_cv[Master]), &(EI->go_mutex[Master])) ;
+                        }
+                        MALF_BEFORE(trick->sensor.job[0]);
+                        TRICK_DEBUG( concentration_sensor_init() );
+                        concentration_sensor_init(&(trick->sensor.concentration_sensor)) ;
+                        MALF_AFTER(trick->sensor.job[0]);
+                        break;
+                case 2:
+                        if( trick->control.job[0].in.enabled == No ) {
+                                break ;
+                        }
+                        if ( EI->debugging == On ) {
+                                send_hs(stderr,"%.4f debugging pause before init_job concentration_control_init()\n" , EO->time ) ;
+                                pthread_cond_wait(&(EI->go_cv[Master]), &(EI->go_mutex[Master])) ;
+                        }
+                        MALF_BEFORE(trick->control.job[0]);
+                        TRICK_DEBUG( concentration_control_init() );
+                        concentration_control_init(&(trick->control.concentration_control)) ;
+                        MALF_AFTER(trick->control.job[0]);
                         break;
         }
 
@@ -1689,6 +2001,18 @@ int exec_scheduled_modules( EXECUTIVE * E , int job_index , int proc_id ) {
                         MALF_AFTER(trick->sys.job[0]);
                         break ; 
                 case 2:
+                        MALF_BEFORE(trick->sensor.job[1]);
+                      TRICK_DEBUG( concentration_sensor_update() );
+                        ret = concentration_sensor_update(&(trick->sensor.concentration_sensor), &(trick->dyn.organs));
+                        MALF_AFTER(trick->sensor.job[1]);
+                        break ; 
+                case 3:
+                        MALF_BEFORE(trick->control.job[1]);
+                      TRICK_DEBUG( concentration_control() );
+                        ret = concentration_control(&(trick->control.concentration_control), &(trick->dyn.organs), &(trick->sensor.concentration_sensor));
+                        MALF_AFTER(trick->control.job[1]);
+                        break ; 
+                case 4:
                         MALF_BEFORE(trick->sys.job[1]);
                       TRICK_DEBUG( var_server_sync() );
                         ret = var_server_sync(&(trick->sys.exec));

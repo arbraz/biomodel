@@ -7,7 +7,7 @@
 #############################################################################
 # Creation:
 #    Author: Trick Configuration Processor - CP Version 07.23.1-1
-#    Date:   Tue Apr  8 14:29:47 2014
+#    Date:   Tue Apr  8 16:43:02 2014
 #
 #############################################################################
 #
@@ -131,8 +131,27 @@ endif
 
 TRICK_ULIBS = ${TRICK_USER_LINK_LIBS}
 
+#MODEL_DIR_bio_control = /home/Alex1/trick_models/bio/control
 #MODEL_DIR_bio_organs = /home/Alex1/trick_models/bio/organs
+#MODEL_DIR_bio_sensors = /home/Alex1/trick_models/bio/sensors
 
+
+MODEL_C_SRC_bio_control = \
+	/home/Alex1/trick_models/bio/control/src/concentration_control.c \
+	/home/Alex1/trick_models/bio/control/src/concentration_control_init.c
+
+MODEL_C_OBJ_bio_control = \
+	/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control.o \
+	/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control_init.o
+
+MODEL_IO_SRC_bio_control = \
+	/home/Alex1/trick_models/bio/control/io_src/io_concentration_control.c
+
+MODEL_IO_OBJ_bio_control = \
+	/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/io_concentration_control.o
+
+MODEL_HEADERS_bio_control = \
+	/home/Alex1/trick_models/bio/control/include/concentration_control.h
 
 MODEL_C_SRC_bio_organs = \
 	/home/Alex1/trick_models/bio/organs/src/concentration_deriv.c \
@@ -156,22 +175,51 @@ MODEL_HEADERS_bio_organs = \
 	/home/Alex1/trick_models/bio/organs/include/organ_params.h \
 	/home/Alex1/trick_models/bio/organs/include/organs.h
 
+MODEL_C_SRC_bio_sensors = \
+	/home/Alex1/trick_models/bio/sensors/src/concentration_sensor_init.c \
+	/home/Alex1/trick_models/bio/sensors/src/concentration_sensor_update.c
+
+MODEL_C_OBJ_bio_sensors = \
+	/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_init.o \
+	/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_update.o
+
+MODEL_IO_SRC_bio_sensors = \
+	/home/Alex1/trick_models/bio/sensors/io_src/io_concentration_sensor.c
+
+MODEL_IO_OBJ_bio_sensors = \
+	/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/io_concentration_sensor.o
+
+MODEL_HEADERS_bio_sensors = \
+	/home/Alex1/trick_models/bio/sensors/include/concentration_sensor.h
+
 MODEL_ALL_SRC = \
+	$(MODEL_C_SRC_bio_control) \
+	$(MODEL_HEADERS_bio_control) \
 	$(MODEL_C_SRC_bio_organs) \
-	$(MODEL_HEADERS_bio_organs)
+	$(MODEL_HEADERS_bio_organs) \
+	$(MODEL_C_SRC_bio_sensors) \
+	$(MODEL_HEADERS_bio_sensors)
 
 
 OBJECTS = \
 	$(LIB_DIR)/o0.o \
 	$(LIB_DIR)/o1.o \
-	$(LIB_DIR)/o2.o
+	$(LIB_DIR)/o2.o \
+	$(LIB_DIR)/o3.o \
+	$(LIB_DIR)/o4.o \
+	$(LIB_DIR)/o5.o \
+	$(LIB_DIR)/o6.o
 
 IO_OBJECTS = \
 	$(LIB_DIR)/i0.o \
-	$(LIB_DIR)/i1.o
+	$(LIB_DIR)/i1.o \
+	$(LIB_DIR)/i2.o \
+	$(LIB_DIR)/i3.o
 
 MODEL_OBJ_DIRS = \
-	/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}
+	/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU} \
+	/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU} \
+	/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}
 
 BUILD_USER_LIBS = 
 
@@ -290,7 +338,9 @@ spotless: real_clean
 	@ $(PERL) ${TRICK_HOME}/bin/catalog -initialize
 	@ rm -rf lib_* S_main* tags
 	@ echo "Removed all S_mains"
+	@ cd /home/Alex1/trick_models/bio/control ; rm -rf catalog xml io_src object_* 
 	@ cd /home/Alex1/trick_models/bio/organs ; rm -rf catalog xml io_src object_* 
+	@ cd /home/Alex1/trick_models/bio/sensors ; rm -rf catalog xml io_src object_* 
 	@ echo "Removed all catalog, xml, io_src, and object_* dirs"
 
 clean_obj: clean_model_c_obj clean_model_cpp_obj clean_model_io_obj clean_lex_yacc_obj
@@ -300,18 +350,24 @@ clean_cat:
 
 
 clean_model_c_obj:
+	@ rm -f $(MODEL_C_OBJ_bio_control)
 	@ rm -f $(MODEL_C_OBJ_bio_organs)
+	@ rm -f $(MODEL_C_OBJ_bio_sensors)
 	@ echo "Model c_obj files have been removed"
 
 clean_model_cpp_obj:
 	@ echo "Model cpp_obj files have been removed"
 
 clean_model_io_src:
+	@ rm -f $(MODEL_IO_SRC_bio_control)
 	@ rm -f $(MODEL_IO_SRC_bio_organs)
+	@ rm -f $(MODEL_IO_SRC_bio_sensors)
 	@ echo "Model io_src files have been removed"
 
 clean_model_io_obj:
+	@ rm -f $(MODEL_IO_OBJ_bio_control)
 	@ rm -f $(MODEL_IO_OBJ_bio_organs)
+	@ rm -f $(MODEL_IO_OBJ_bio_sensors)
 	@ echo "Model io_obj files have been removed"
 
 clean_lex_yacc_obj:
@@ -321,7 +377,9 @@ clean_lex_yacc_src:
 	@ echo "Model lex/yacc src files have been removed"
 
 depend: depend_title \
-	depend_1\
+	depend_1 \
+	depend_2 \
+	depend_3\
 	depend_s_source
 
 	@ $(PERL) ${TRICK_HOME}/bin/depend_cp $(DEPTEMPFILE) > $(DEPFILE)
@@ -330,18 +388,30 @@ depend: depend_title \
 	@ echo "[32mAppended dependencies to $(MAKEFILE)[00m"
 
 depend_title:
-	@ echo "[36mAdding makedepend dependencies [1 dir(s)][00m"
+	@ echo "[36mAdding makedepend dependencies [3 dir(s)][00m"
 
 
 depend_1 : depend_title
-	@ echo "   1. Adding dependencies for src files in /home/Alex1/trick_models/bio/organs"
+	@ echo "   1. Adding dependencies for src files in /home/Alex1/trick_models/bio/control"
+	@ echo "" >> $(DEPTEMPFILE)
+	@ echo "# Dependencies for src files in /home/Alex1/trick_models/bio/control/src/" >> $(DEPTEMPFILE)
+
+	-@ cd /home/Alex1/trick_models/bio/control/src/ ; $(TRICK_CC) -MM $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) $(MAKEDEP_CPP_INC) $(MODEL_C_SRC_bio_control) $(MODEL_CPP_SRC_bio_control) >> $(DEPTEMPFILE)
+depend_2 : depend_title
+	@ echo "   2. Adding dependencies for src files in /home/Alex1/trick_models/bio/organs"
 	@ echo "" >> $(DEPTEMPFILE)
 	@ echo "# Dependencies for src files in /home/Alex1/trick_models/bio/organs/src/" >> $(DEPTEMPFILE)
 
 	-@ cd /home/Alex1/trick_models/bio/organs/src/ ; $(TRICK_CC) -MM $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) $(MAKEDEP_CPP_INC) $(MODEL_C_SRC_bio_organs) $(MODEL_CPP_SRC_bio_organs) >> $(DEPTEMPFILE)
+depend_3 : depend_title
+	@ echo "   3. Adding dependencies for src files in /home/Alex1/trick_models/bio/sensors"
+	@ echo "" >> $(DEPTEMPFILE)
+	@ echo "# Dependencies for src files in /home/Alex1/trick_models/bio/sensors/src/" >> $(DEPTEMPFILE)
+
+	-@ cd /home/Alex1/trick_models/bio/sensors/src/ ; $(TRICK_CC) -MM $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) $(MAKEDEP_CPP_INC) $(MODEL_C_SRC_bio_sensors) $(MODEL_CPP_SRC_bio_sensors) >> $(DEPTEMPFILE)
 
 depend_s_source:
-	@ echo "   2. Adding dependencies for S_source.c"
+	@ echo "   4. Adding dependencies for S_source.c"
 	@ echo "" >> $(DEPTEMPFILE)
 	@ echo "# Dependencies for S_source.c" >> $(DEPTEMPFILE)
 	@ $(TRICK_CC) -MM $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) $(MAKEDEP_CPP_INC) S_source.c >> $(DEPTEMPFILE)
@@ -355,49 +425,114 @@ $(LIB_DIR)/lib_sim_objs.a : $(OBJECTS) $(IO_OBJECTS) $(LIB_DIR)/S_source.o $(LIB
 	     echo ${TRICK_RANLIB} $(LIB_DIR)/lib_sim_objs.a ; \
 	     ${TRICK_RANLIB} $(LIB_DIR)/lib_sim_objs.a ; \
 	  fi
-$(LIB_DIR)/o0.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/concentration_deriv.o
-	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/concentration_deriv.o $(LIB_DIR)/o0.o
-$(LIB_DIR)/o1.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_init.o
-	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_init.o $(LIB_DIR)/o1.o
-$(LIB_DIR)/o2.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_integ.o
-	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_integ.o $(LIB_DIR)/o2.o
-$(LIB_DIR)/i0.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organ_params.o
-	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organ_params.o $(LIB_DIR)/i0.o
-$(LIB_DIR)/i1.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o
-	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o $(LIB_DIR)/i1.o
+$(LIB_DIR)/o0.o : /home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control.o
+	ln -f -s /home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control.o $(LIB_DIR)/o0.o
+$(LIB_DIR)/o1.o : /home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control_init.o
+	ln -f -s /home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control_init.o $(LIB_DIR)/o1.o
+$(LIB_DIR)/o2.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/concentration_deriv.o
+	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/concentration_deriv.o $(LIB_DIR)/o2.o
+$(LIB_DIR)/o3.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_init.o
+	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_init.o $(LIB_DIR)/o3.o
+$(LIB_DIR)/o4.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_integ.o
+	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/organ_integ.o $(LIB_DIR)/o4.o
+$(LIB_DIR)/o5.o : /home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_init.o
+	ln -f -s /home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_init.o $(LIB_DIR)/o5.o
+$(LIB_DIR)/o6.o : /home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_update.o
+	ln -f -s /home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_update.o $(LIB_DIR)/o6.o
+$(LIB_DIR)/i0.o : /home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/io_concentration_control.o
+	ln -f -s /home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/io_concentration_control.o $(LIB_DIR)/i0.o
+$(LIB_DIR)/i1.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organ_params.o
+	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organ_params.o $(LIB_DIR)/i1.o
+$(LIB_DIR)/i2.o : /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o
+	ln -f -s /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o $(LIB_DIR)/i2.o
+$(LIB_DIR)/i3.o : /home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/io_concentration_sensor.o
+	ln -f -s /home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/io_concentration_sensor.o $(LIB_DIR)/i3.o
 
 #MODEL_OBJ_DIRS
 
+/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU} :
+	@ mkdir -p $@
 /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU} :
+	@ mkdir -p $@
+/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU} :
 	@ mkdir -p $@
 
 #MODEL_CATALOG_DIRS
 
+/home/Alex1/trick_models/bio/control/catalog :
+	@ mkdir -p $@
 /home/Alex1/trick_models/bio/organs/catalog :
 	@ mkdir -p $@
-lib/i0.o: /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organ_params.o
+/home/Alex1/trick_models/bio/sensors/catalog :
+	@ mkdir -p $@
+lib/i0.o: /home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/io_concentration_control.o
 	ln -f -s $? $@
-lib/i1.o: /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o
+lib/i1.o: /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organ_params.o
+	ln -f -s $? $@
+lib/i2.o: /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o
+	ln -f -s $? $@
+lib/i3.o: /home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/io_concentration_sensor.o
 	ln -f -s $? $@
 
 
 #ICG_DEPEND_FILES
 
-# Depends for /home/Alex1/trick_models/bio/organs/include/organs.h
+# Depends for /home/Alex1/trick_models/bio/control/include/concentration_control.h
 
 ICG_DEPENDS_0000 = \
+	/home/Alex1/trick_models/bio/control/include/concentration_control.h \
+	/home/Alex1/trick_models/bio/organs/include/organ_params.h \
+	/home/Alex1/trick_models/bio/organs/include/organs.h \
+	/home/Alex1/trick_models/bio/sensors/include/concentration_sensor.h
+
+/home/Alex1/trick_models/bio/control/io_src/io_concentration_control.c \
+/home/Alex1/trick_models/bio/organs/io_src/io_organ_params.c \
+/home/Alex1/trick_models/bio/organs/io_src/io_organs.c \
+/home/Alex1/trick_models/bio/sensors/io_src/io_concentration_sensor.c:: $(ICG_DEPENDS_0000)
+	$(PERL) ${TRICK_HOME}/bin/ICG /home/Alex1/trick_models/bio/control/include/concentration_control.h
+
+
+# Depends for /home/Alex1/trick_models/bio/organs/include/organs.h
+
+ICG_DEPENDS_0001 = \
 	/home/Alex1/trick_models/bio/organs/include/organ_params.h \
 	/home/Alex1/trick_models/bio/organs/include/organs.h
 
 /home/Alex1/trick_models/bio/organs/io_src/io_organ_params.c \
-/home/Alex1/trick_models/bio/organs/io_src/io_organs.c:: $(ICG_DEPENDS_0000)
+/home/Alex1/trick_models/bio/organs/io_src/io_organs.c:: $(ICG_DEPENDS_0001)
 	$(PERL) ${TRICK_HOME}/bin/ICG /home/Alex1/trick_models/bio/organs/include/organs.h
 
 
+# Depends for /home/Alex1/trick_models/bio/sensors/include/concentration_sensor.h
+
+ICG_DEPENDS_0002 = \
+	/home/Alex1/trick_models/bio/organs/include/organ_params.h \
+	/home/Alex1/trick_models/bio/organs/include/organs.h \
+	/home/Alex1/trick_models/bio/sensors/include/concentration_sensor.h
+
+/home/Alex1/trick_models/bio/organs/io_src/io_organ_params.c \
+/home/Alex1/trick_models/bio/organs/io_src/io_organs.c \
+/home/Alex1/trick_models/bio/sensors/io_src/io_concentration_sensor.c:: $(ICG_DEPENDS_0002)
+	$(PERL) ${TRICK_HOME}/bin/ICG /home/Alex1/trick_models/bio/sensors/include/concentration_sensor.h
+
+
 model_objects : \
-	model_obj_bio_organs
+	model_obj_bio_control \
+	model_obj_bio_organs \
+	model_obj_bio_sensors
+
+model_obj_bio_control : model_c_obj_bio_control model_h_obj_bio_control
 
 model_obj_bio_organs : model_c_obj_bio_organs model_h_obj_bio_organs
+
+model_obj_bio_sensors : model_c_obj_bio_sensors model_h_obj_bio_sensors
+
+model_c_obj_bio_control : \
+	/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control.o \
+	/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control_init.o
+
+model_h_obj_bio_control : \
+	/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/io_concentration_control.o
 
 model_c_obj_bio_organs : \
 	/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/concentration_deriv.o \
@@ -407,6 +542,36 @@ model_c_obj_bio_organs : \
 model_h_obj_bio_organs : \
 	/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organ_params.o \
 	/home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o
+
+model_c_obj_bio_sensors : \
+	/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_init.o \
+	/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_update.o
+
+model_h_obj_bio_sensors : \
+	/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/io_concentration_sensor.o
+
+#MODEL_C_OBJ_bio_control
+
+/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control.o : /home/Alex1/trick_models/bio/control/src/concentration_control.c
+	cd /home/Alex1/trick_models/bio/control/src/ ; $(TRICK_CC) $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) -c ${@F:.o=.c} -o $@
+/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/concentration_control_init.o : /home/Alex1/trick_models/bio/control/src/concentration_control_init.c
+	cd /home/Alex1/trick_models/bio/control/src/ ; $(TRICK_CC) $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) -c ${@F:.o=.c} -o $@
+
+
+#MODEL_CPP_OBJ_bio_control
+
+
+
+#MODEL_LEX_YACC_OBJ_bio_control
+
+
+
+#MODEL_IO_OBJ_bio_control
+
+/home/Alex1/trick_models/bio/control/object_${TRICK_HOST_CPU}/io_concentration_control.o : /home/Alex1/trick_models/bio/control/io_src/io_concentration_control.c
+	cd /home/Alex1/trick_models/bio/control ; $(TRICK_CC) $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) -c io_src/${@F:.o=.c} -o $@
+
+
 
 #MODEL_C_OBJ_bio_organs
 
@@ -433,6 +598,29 @@ model_h_obj_bio_organs : \
 
 /home/Alex1/trick_models/bio/organs/object_${TRICK_HOST_CPU}/io_organs.o : /home/Alex1/trick_models/bio/organs/io_src/io_organs.c
 	cd /home/Alex1/trick_models/bio/organs ; $(TRICK_CC) $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) -c io_src/${@F:.o=.c} -o $@
+
+
+
+#MODEL_C_OBJ_bio_sensors
+
+/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_init.o : /home/Alex1/trick_models/bio/sensors/src/concentration_sensor_init.c
+	cd /home/Alex1/trick_models/bio/sensors/src/ ; $(TRICK_CC) $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) -c ${@F:.o=.c} -o $@
+/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/concentration_sensor_update.o : /home/Alex1/trick_models/bio/sensors/src/concentration_sensor_update.c
+	cd /home/Alex1/trick_models/bio/sensors/src/ ; $(TRICK_CC) $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) -c ${@F:.o=.c} -o $@
+
+
+#MODEL_CPP_OBJ_bio_sensors
+
+
+
+#MODEL_LEX_YACC_OBJ_bio_sensors
+
+
+
+#MODEL_IO_OBJ_bio_sensors
+
+/home/Alex1/trick_models/bio/sensors/object_${TRICK_HOST_CPU}/io_concentration_sensor.o : /home/Alex1/trick_models/bio/sensors/io_src/io_concentration_sensor.c
+	cd /home/Alex1/trick_models/bio/sensors ; $(TRICK_CC) $(CPP_PRE_DEFS) $(TRICK_CFLAGS) $(CPP_POST_DEFS) -c io_src/${@F:.o=.c} -o $@
 
 
 -include S_overrides.mk

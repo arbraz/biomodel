@@ -3,8 +3,8 @@
 General:
 
 Executable called = /home/Alex1/trick_sims/SIM_bio/S_main_Linux_4.1_25.exe
-Input file = RUN_bio/input
-S_main build time = Tue Apr  8 14:29:47 2014
+Input file = RUN_bio/input_control
+S_main build time = Tue Apr  8 16:43:02 2014
 Trick version = 07.23.1-1
 
 ===============================================================================
@@ -46,6 +46,10 @@ auto = auto generated file, no RCS information available
 
 chksum  version  owner      RCS date            file name
 -------------------------------------------------------------------------------
+undef   --       --         --                  /home/Alex1/trick_models/bio/control/include/concentration_control.d
+undef   --       --         --                  /home/Alex1/trick_models/bio/control/include/concentration_control.h
+undef   --       --         --                  /home/Alex1/trick_models/bio/control/src/concentration_control.c
+undef   --       --         --                  /home/Alex1/trick_models/bio/control/src/concentration_control_init.c
 undef   --       --         --                  /home/Alex1/trick_models/bio/organs/include/organ_integ.d
 undef   --       --         --                  /home/Alex1/trick_models/bio/organs/include/organ_params.h
 undef   --       --         --                  /home/Alex1/trick_models/bio/organs/include/organs.d
@@ -53,3 +57,7 @@ undef   --       --         --                  /home/Alex1/trick_models/bio/org
 undef   --       --         --                  /home/Alex1/trick_models/bio/organs/src/concentration_deriv.c
 undef   --       --         --                  /home/Alex1/trick_models/bio/organs/src/organ_init.c
 undef   --       --         --                  /home/Alex1/trick_models/bio/organs/src/organ_integ.c
+undef   --       --         --                  /home/Alex1/trick_models/bio/sensors/include/concentration_sensor.d
+undef   --       --         --                  /home/Alex1/trick_models/bio/sensors/include/concentration_sensor.h
+undef   --       --         --                  /home/Alex1/trick_models/bio/sensors/src/concentration_sensor_init.c
+undef   --       --         --                  /home/Alex1/trick_models/bio/sensors/src/concentration_sensor_update.c

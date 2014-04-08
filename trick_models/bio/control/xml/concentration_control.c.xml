@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="/home/Alex1/Downloads/07.23.1/docs/trick_module.xsl"?>
+
+<!--Note:
+    Firefox 3 fails to process XSLT files if they are on the local hard drive
+    plus outside of the current XML file's path (or descendant paths). Users
+    may need to edit $HOME/.mozilla/firefox/*.default/prefs.js and add a new
+    URI setting in order to properly view this file in a firefox browser:
+    - user_pref("security.fileuri.strict_origin_policy", false);
+    OR
+    - type about:config in the address bar
+    - change security.fileuri.strict_origin_policy to false
+-->
+
+<file>
+    <file_name> concentration_control.c </file_name>
+    <full_path_file_name> /home/Alex1/trick_models/bio/control/src/concentration_control.c </full_path_file_name>
+    <trick_header>
+        <references>
+        </references>
+        <assumptions>
+        </assumptions>
+        <requirements>
+        </requirements>
+        <library_dependencies>
+        </library_dependencies>
+        <purpose>  Control output update for chemical concentration sensor </purpose>
+        <class></class>
+        <modifications>
+        </modifications>
+    </trick_header>
+
+    <jobs>
+        <job>
+            <job_name> concentration_control </job_name>
+            <return_type> int  </return_type>
+            <units> -- </units>
+            <comment> Not Specified </comment>
+            <argument_list>
+                <arg>
+                    <arg_name> CC </arg_name>
+                    <type> CONCENTRATION_CONTROL </type>
+                    <dims> *  </dims>
+                    <inout>  </inout>
+                    <units> -- </units>
+                    <comment> Not specified </comment>
+                </arg>
+                <arg>
+                    <arg_name> O </arg_name>
+                    <type> ORGANS </type>
+                    <dims> *  </dims>
+                    <inout>  </inout>
+                    <units> -- </units>
+                    <comment> Not specified </comment>
+                </arg>
+                <arg>
+                    <arg_name> CS </arg_name>
+                    <type> CONCENTRATION_SENSOR </type>
+                    <dims> *  </dims>
+                    <inout>  </inout>
+                    <units> -- </units>
+                    <comment> Not specified </comment>
+                </arg>
+            </argument_list>
+        </job>
+    </jobs>
+    <includes>
+        <file>#include &quot;bio/organs/include/organs.h&quot;</file>
+        <file>#include &quot;bio/sensors/include/concentration_sensor.h&quot;</file>
+        <file>#include &quot;bio/control/include/concentration_control.h&quot;</file>
+    </includes>
+</file>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="/home/Alex1/Downloads/07.23.1/docs/trick_struct.xsl"?>
+
+<!--Note:
+    Firefox 3 fails to process XSLT files if they are on the local hard drive
+    plus outside of the current XML file's path (or descendant paths). Users
+    may need to edit $HOME/.mozilla/firefox/*.default/prefs.js and add a new
+    URI setting in order to properly view this file in a firefox browser:
+    - user_pref("security.fileuri.strict_origin_policy", false);
+    OR
+    - type about:config in the address bar
+    - change security.fileuri.strict_origin_policy to false
+-->
+
+<file>
+    <file_name> concentration_control.h </file_name>
+    <full_path_file_name> /home/Alex1/trick_models/bio_woc/control/include/concentration_control.h </full_path_file_name>
+    <trick_header>
+        <references>
+        </references>
+        <assumptions>
+        </assumptions>
+        <requirements>
+        </requirements>
+        <library_dependencies>
+        </library_dependencies>
+        <purpose> Concentration Control Structure </purpose>
+        <class></class>
+        <modifications>
+        </modifications>
+    </trick_header>
+
+    <enumerations>
+    </enumerations>
+
+    <structures>
+        <struct>
+            <struct_name>CONCENTRATION_CONTROL</struct_name>
+            <member>
+                <pname>C_desired</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>desired concentration value</comment>
+            </member>
+            <member>
+                <pname>Kp</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>proportional gain</comment>
+            </member>
+            <member>
+                <pname>Ki</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>integral gains</comment>
+            </member>
+            <member>
+                <pname>Kd</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>derivative gains</comment>
+            </member>
+            <member>
+                <pname>error</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Not Specified</comment>
+            </member>
+            <member>
+                <pname>error_integral</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Not Specified</comment>
+            </member>
+            <member>
+                <pname>error_rate</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Not Specified</comment>
+            </member>
+            <member>
+                <pname>control_increment</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>change to control variable per cycle</comment>
+            </member>
+            <member>
+                <pname>control_command</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>total control command</comment>
+            </member>
+            <member>
+                <pname>error_last</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Not Specified</comment>
+            </member>
+            <member>
+                <pname>error_integral_limit</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Not Specified</comment>
+            </member>
+            <member>
+                <pname>time</pname>
+                <type>double</type>
+                <dims>scalar</dims>
+                <units>--</units>
+                <comment>Not Specified</comment>
+            </member>
+        </struct>
+
+    </structures>
+
+</file>

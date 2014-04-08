@@ -8,7 +8,7 @@
  */
 
 
-/* $Id: S_source.c auto 2014/04/08 14:29:47 Alex1 */
+/* $Id: S_source.c auto 2014/04/08 16:43:02 Alex1 */
 
 #define NUM_STEP 12
 #define NUM_VARIABLES 4

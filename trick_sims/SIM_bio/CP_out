@@ -1,4 +1,4 @@
-Output for /home/Alex1/Downloads/07.23.1/bin/CP version 07.23.1-1 at Tue Apr  8 14:29:46 2014
+Output for /home/Alex1/Downloads/07.23.1/bin/CP version 07.23.1-1 at Tue Apr  8 16:43:01 2014
 
 Parsing S_define...
 
@@ -16,6 +16,16 @@ Looking for module organ_init...(found cache)
 Looking for module concentration_deriv...(found cache)
 Looking for module organ_integ...(found cache)
 
+Processing sim_object sensor
+Looking for structure CONCENTRATION_SENSOR... (found cache)
+Looking for module concentration_sensor_init...(found cache)
+Looking for module concentration_sensor_update...(found cache)
+
+Processing sim_object control
+Looking for structure CONCENTRATION_CONTROL... (found cache)
+Looking for module concentration_control_init...(found cache)
+Looking for module concentration_control...(found cache)
+
 Completed parsing S_define
 
 Determining structure dependencies.
@@ -30,6 +40,18 @@ MIS-ing all src files...
    Processing /home/Alex1/trick_models/bio/organs/src/organ_integ.c
       Processing organ_integ
       Processed (job_class = N/A) int  organ_integ(INTEGRATOR*,ORGANS*)
+   Processing /home/Alex1/trick_models/bio/sensors/src/concentration_sensor_init.c
+      Processing concentration_sensor_init
+      Processed (job_class = N/A) int  concentration_sensor_init(CONCENTRATION_SENSOR*)
+   Processing /home/Alex1/trick_models/bio/sensors/src/concentration_sensor_update.c
+      Processing concentration_sensor_update
+      Processed (job_class = N/A) int  concentration_sensor_update(CONCENTRATION_SENSOR*,ORGANS*)
+   Processing /home/Alex1/trick_models/bio/control/src/concentration_control_init.c
+      Processing concentration_control_init
+      Processed (job_class = N/A) int  concentration_control_init(CONCENTRATION_CONTROL*)
+   Processing /home/Alex1/trick_models/bio/control/src/concentration_control.c
+      Processing concentration_control
+      Processed (job_class = N/A) int  concentration_control(CONCENTRATION_CONTROL*,ORGANS*,CONCENTRATION_SENSOR*)
 
 MIS complete
 
@@ -38,16 +60,24 @@ Creating New Makefile...  Complete
 Creating S_source.c... Complete
 Creating Default_data... Complete
 Creating S_document.xml... Complete
-Adding makedepend dependencies [1 dir(s)]
-   1. Adding dependencies for src files in /home/Alex1/trick_models/bio/organs
-   2. Adding dependencies for S_source.c
+Adding makedepend dependencies [3 dir(s)]
+   1. Adding dependencies for src files in /home/Alex1/trick_models/bio/control
+   2. Adding dependencies for src files in /home/Alex1/trick_models/bio/organs
+   3. Adding dependencies for src files in /home/Alex1/trick_models/bio/sensors
+   4. Adding dependencies for S_source.c
 
 Appended dependencies to Makefile
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/concentration_deriv.o lib_Linux_4.1_25/o0.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_init.o lib_Linux_4.1_25/o1.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_integ.o lib_Linux_4.1_25/o2.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organ_params.o lib_Linux_4.1_25/i0.o
-ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organs.o lib_Linux_4.1_25/i1.o
+ln -f -s /home/Alex1/trick_models/bio/control/object_Linux_4.1_25/concentration_control.o lib_Linux_4.1_25/o0.o
+ln -f -s /home/Alex1/trick_models/bio/control/object_Linux_4.1_25/concentration_control_init.o lib_Linux_4.1_25/o1.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/concentration_deriv.o lib_Linux_4.1_25/o2.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_init.o lib_Linux_4.1_25/o3.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/organ_integ.o lib_Linux_4.1_25/o4.o
+ln -f -s /home/Alex1/trick_models/bio/sensors/object_Linux_4.1_25/concentration_sensor_init.o lib_Linux_4.1_25/o5.o
+ln -f -s /home/Alex1/trick_models/bio/sensors/object_Linux_4.1_25/concentration_sensor_update.o lib_Linux_4.1_25/o6.o
+ln -f -s /home/Alex1/trick_models/bio/control/object_Linux_4.1_25/io_concentration_control.o lib_Linux_4.1_25/i0.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organ_params.o lib_Linux_4.1_25/i1.o
+ln -f -s /home/Alex1/trick_models/bio/organs/object_Linux_4.1_25/io_organs.o lib_Linux_4.1_25/i2.o
+ln -f -s /home/Alex1/trick_models/bio/sensors/object_Linux_4.1_25/io_concentration_sensor.o lib_Linux_4.1_25/i3.o
 cc   -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include  -c S_source.c -o lib_Linux_4.1_25/S_source.o
 Verifying sim checksums...
 cc   -I/home/Alex1/trick_models -DTRICK_VER=07 -DTRICK_MINOR=23 -I/home/Alex1/Downloads/07.23.1/trick_source -I../include  -c S_checksums.c -o lib_Linux_4.1_25/S_checksums.o
